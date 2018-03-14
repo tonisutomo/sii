@@ -1,0 +1,2277 @@
+import grails.converters.JSON
+import grails.rptk.*
+import grails.imta.*
+import id.go.skkmigas.rptk.auth.*
+import java.sql.Timestamp
+
+class BootStrap {
+
+    def init = { servletContext ->
+		
+        new RJurusan(name:"Arsitektur").save(flush:true,failOnError:true);
+        new RJurusan(name:"Arsitektur Interior").save(flush:true,failOnError:true);
+        new RJurusan(name:"Bisnis dan Manajemen").save(flush:true,failOnError:true);
+        new RJurusan(name:"Farmasi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Geografi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Gizi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Administrasi Fiskal").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Administrasi Negara").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Administrasi Niaga").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu dan Teknologi Hayati - Program Rekayasa").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu dan Teknologi Hayati - Program Sains").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu dan Teknologi Kebumian – Geodesi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu dan Teknologi Kebumian – Geologi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu dan Teknologi Kebumian – Geofisika").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Ekonomi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Filsafat").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Hubungan Internasional").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Hukum").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Keperawatan").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Kesehatan Masyarakat").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Kesejahteraan Sosial").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Komputer").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Komunikasi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Perpustakaan").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Politik").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Psikologi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Ilmu Sejarah").save(flush:true,failOnError:true);
+        new RJurusan(name:"IPA - Astronomi").save(flush:true,failOnError:true);
+        new RJurusan(name:"IPA - Biologi").save(flush:true,failOnError:true);
+        new RJurusan(name:"IPA - Fisika").save(flush:true,failOnError:true);
+        new RJurusan(name:"IPA – Kimia").save(flush:true,failOnError:true);
+        new RJurusan(name:"Kriminologi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Manajemen").save(flush:true,failOnError:true);
+        new RJurusan(name:"Matematika").save(flush:true,failOnError:true);
+        new RJurusan(name:"Pendidikan Dokter").save(flush:true,failOnError:true);
+        new RJurusan(name:"Pendidikan Dokter Gigi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Planologi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Sastra").save(flush:true,failOnError:true);
+        new RJurusan(name:"Senirupa dan Desain").save(flush:true,failOnError:true);
+        new RJurusan(name:"Sistem Informasi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Sosiologi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Elektro").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Industri").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Informatika").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Kelautan").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Kimia").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Komputer").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Lingkungan").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Material").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Mesin").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Metalurgi").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Penerbangan").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Perkapalan").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Pertambangan dan Perminyakan").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknik Sipil").save(flush:true,failOnError:true);
+        new RJurusan(name:"Teknologi Bioproses").save(flush:true,failOnError:true);
+        new RJurusan(name:"Other").save(flush:true,failOnError:true);
+		
+        // GENERATE DUMMY DATA
+		 generateDummyData()
+		
+		// REGISTER JSON CONFIG
+		registerJsonConfig()
+		
+        // UTILITY OBJECT
+        Timestamp now = new Timestamp(new Date().getTime())
+        Date today = new Date()
+
+        /** PHASE 1 DATA SEEDING **/
+
+        // KKKS
+        Kkks kkks2 = new Kkks(
+            namaKkks: "PT Chevron Pacific Indonesia",
+            kantorPusat: "-",
+            kantorCabang: "-",
+            telepon: "-",
+            fax: "-",
+            email: "-",
+            namaPimpinan: "-",
+            lokasiKegiatan: "-",
+            jenisUsaha: "Produksi",
+            nomorSiup: "-",
+            statusBadanUsaha: "-",
+            instansiIjin: "-",
+            isActive: true,
+            createdBy: "System BootStrap",
+            createdDate: today,
+            updatedBy: "System BootStrap",
+            updatedDate: today
+        ).save(flush:true,failOnError:true);
+	
+    Rptk rptk2 = new Rptk(
+		idRptk:3,
+		kkks:kkks2,
+		tahun1:2016,
+		tahun2:2022,
+		kuartal1:2,
+		kuartal2:4,
+		versi:"U1-a",
+		stLampiran1:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran2:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran3:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran4:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran5:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran6:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran7:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran8:"/Sites/testrptk/Desain_dashboard.xlsx"
+	)
+	rptk2.save()
+	
+	Rptk rptk3 = new Rptk(
+		idRptk:4,
+		kkks:kkks2,
+		tahun1:2015,
+		tahun2:2022,
+		kuartal1:1,
+		kuartal2:2,		
+		versi:"U1-b",
+		stLampiran1:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran2:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran3:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran4:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran5:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran6:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran7:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran8:"/Sites/testrptk/Desain_dashboard.xlsx"
+	)
+	rptk3.save()
+    
+    Nota nota1 = new Nota(
+        rptk:rptk2,
+        dokumen:null,
+        createdBy: "System BootStrap",
+        createdDate: today,
+        updatedBy: "System BootStrap",
+        updatedDate: today
+    ).save(flush:true,failOnError:true);
+
+    Nota nota2 = new Nota(
+        rptk:rptk3,
+        dokumen:null,
+        createdBy: "System BootStrap",
+        createdDate: today,
+        updatedBy: "System BootStrap",
+        updatedDate: today
+    ).save(flush:true,failOnError:true);
+
+    Timesharing ts1 = new Timesharing(
+        rptk:rptk2,
+        tabelSharing:null,
+        createdBy: "System BootStrap",
+        createdDate: today,
+        updatedBy: "System BootStrap",
+        updatedDate: today
+    ).save(flush:true,failOnError:true);
+
+    Timesharing ts2 = new Timesharing(
+        rptk:rptk3,
+        tabelSharing:null,
+        createdBy: "System BootStrap",
+        createdDate: today,
+        updatedBy: "System BootStrap",
+        updatedDate: today
+    ).save(flush:true,failOnError:true);
+    
+        Kkks kkks3 = new Kkks(
+            namaKkks: "BUKIT ENERGY PALMERAH BARU PTE. LTD",
+            kantorPusat: "-",
+            kantorCabang: "-",
+            telepon: "-",
+            fax: "-",
+            email: "-",
+            namaPimpinan: "-",
+            lokasiKegiatan: "-",
+            jenisUsaha: "Eksplorasi",
+            nomorSiup: "-",
+            statusBadanUsaha: "-",
+            instansiIjin: "-",
+            isActive: true,
+            createdBy: "System BootStrap",
+            createdDate: today,
+            updatedBy: "System BootStrap",
+            updatedDate: today
+        ).save(flush:true,failOnError:true);
+        Kkks kkks4 = new Kkks(
+            namaKkks: "SHELL PULAU MOA PTE LTD",
+            kantorPusat: "-",
+            kantorCabang: "-",
+            telepon: "-",
+            fax: "-",
+            email: "-",
+            namaPimpinan: "-",
+            lokasiKegiatan: "-",
+            jenisUsaha: "Eksplorasi",
+            nomorSiup: "-",
+            statusBadanUsaha: "-",
+            instansiIjin: "-",
+            isActive: true,
+            createdBy: "System BootStrap",
+            createdDate: today,
+            updatedBy: "System BootStrap",
+            updatedDate: today
+        ).save(flush:true,failOnError:true);
+        Kkks kkks5 = new Kkks(
+            namaKkks: "CONOCOPHILLIPS KALIMANTAN EXPLORATION LTD",
+            kantorPusat: "-",
+            kantorCabang: "-",
+            telepon: "-",
+            fax: "-",
+            email: "-",
+            namaPimpinan: "-",
+            lokasiKegiatan: "-",
+            jenisUsaha: "Eksplorasi",
+            nomorSiup: "-",
+            statusBadanUsaha: "-",
+            instansiIjin: "-",
+            isActive: true,
+            createdBy: "System BootStrap",
+            createdDate: today,
+            updatedBy: "System BootStrap",
+            updatedDate: today
+        ).save(flush:true,failOnError:true);
+        Kkks kkks6 = new Kkks(
+            namaKkks: "SALAMANDER ENERGY (BONTANG) PTE. LTD",
+            kantorPusat: "-",
+            kantorCabang: "-",
+            telepon: "-",
+            fax: "-",
+            email: "-",
+            namaPimpinan: "-",
+            lokasiKegiatan: "-",
+            jenisUsaha: "Produksi",
+            nomorSiup: "-",
+            statusBadanUsaha: "-",
+            instansiIjin: "-",
+            isActive: true,
+            createdBy: "System BootStrap",
+            createdDate: today,
+            updatedBy: "System BootStrap",
+            updatedDate: today
+        ).save(flush:true,failOnError:true);
+        Kkks kkks7 = new Kkks(
+            namaKkks: "PACIFIC OIL & GAS (KISARAN) LTD.",
+            kantorPusat: "-",
+            kantorCabang: "-",
+            telepon: "-",
+            fax: "-",
+            email: "-",
+            namaPimpinan: "-",
+            lokasiKegiatan: "-",
+            jenisUsaha: "Produksi",
+            nomorSiup: "-",
+            statusBadanUsaha: "-",
+            instansiIjin: "-",
+            isActive: true,
+            createdBy: "System BootStrap",
+            createdDate: today,
+            updatedBy: "System BootStrap",
+            updatedDate: today
+        ).save(flush:true,failOnError:true);
+        
+        Rptk r1 = new Rptk(
+            idRptk: 2,
+            kkks :kkks3,
+            versi:1,
+            kuartal1:1,
+            kuartal2:3,
+            tahun1:2016,
+            tahun2:2018,
+            stLampiran1:"Dalam Pengerjaan",stLampiran2:"Dalam Pengerjaan",stLampiran3:"Dalam Pengerjaan",stLampiran4:"Dalam Pengerjaan",stLampiran5:"Dalam Pengerjaan",stLampiran6:"Dalam Pengerjaan",stLampiran7:"Dalam Pengerjaan",stLampiran8:"Dalam Pengerjaan"
+        )
+        r1.save()    
+        new Jabatan(levels:"1",rptk:r1,halaman:1,ketTambahan:"Komitmen1", namaJabatan:"Jabatan 1",batasWaktu:"2018").save()
+        new Jabatan(levels:"2",rptk:r1,halaman:1,ketTambahan:"Komitmen2", namaJabatan:"Jabatan 2",batasWaktu:"2018").save()
+        new Jabatan(levels:"Other",rptk:r1,halaman:1,ketTambahan:"Komitmen3", namaJabatan:"Jabatan Other",batasWaktu:"2018").save()
+        
+        // TKA
+        Tka tka1 = new Tka(
+            kkks: kkks2,
+            nip: "1797491749719824",
+            namaTkaAwal: "John",
+            namaTkaTengah: "H.",
+            namaTkaAkhir: "Watson",
+            //alamat: "Baker Street 221B",
+            warganegara: "UK",
+            tempatLahir: "London",
+            //tanggalLahir: "20 Juli 1857",
+            jenisKelamin: "Laki-laki",
+            pendidikan1: "University of London",
+            pendidikan2: "Edinburgh University",
+            pendidikan3: "-",
+            jenis1: "Bachelor Degree",
+            jenis2: "Doctoral Degree",
+            jenis3: "-",
+            ketPendidikan1: "Barts and The London School of Medicine and Dentistry",
+            ketPendidikan2: "-",
+            ketPendidikan3: "-",
+            ketTambahan: "Military Doctor",
+            pengalaman1: "Iraq",
+            pengalaman2: "Afganishtan",
+            pengalaman3: "Detective Assistant",
+            pengalaman4: "-",
+            pengalaman5: "-",
+            jabatan: "Detective Assistant",
+            alias: "Dr. Watson",
+            createdBy: "System BootStrap",
+            createdDate: today,
+            updatedBy: "System BootStrap",
+            updatedDate: today
+        ).save(flush:true,failOnError:true);
+		new ImtaEpo(tka: tka1, isActive: true, createdBy: "System BootStrap", createdDate: today, updatedBy: "System BootStrap", updatedDate: today).save(flush:true,failOnError:true);
+        Tka tka2 = new Tka(
+            kkks: kkks3,
+            nip: "1797491749719824",
+            namaTkaAwal: "John",
+            namaTkaTengah: "H.",
+            namaTkaAkhir: "Watson",
+            //alamat: "Baker Street 221B",
+            warganegara: "UK",
+            tempatLahir: "London",
+            //tanggalLahir: "20 Juli 1857",
+            jenisKelamin: "Laki-laki",
+            pendidikan1: "University of London",
+            pendidikan2: "Edinburgh University",
+            pendidikan3: "-",
+            jenis1: "Bachelor Degree",
+            jenis2: "Doctoral Degree",
+            jenis3: "-",
+            ketPendidikan1: "Barts and The London School of Medicine and Dentistry",
+            ketPendidikan2: "-",
+            ketPendidikan3: "-",
+            ketTambahan: "Military Doctor",
+            pengalaman1: "Iraq",
+            pengalaman2: "Afganishtan",
+            pengalaman3: "Detective Assistant",
+            pengalaman4: "-",
+            pengalaman5: "-",
+            jabatan: "Detective Assistant",
+            alias: "Dr. Watson",
+            createdBy: "System BootStrap",
+            createdDate: today,
+            updatedBy: "System BootStrap",
+            updatedDate: today
+        ).save(flush:true,failOnError:true);
+		new ImtaEpo(tka: tka2, isActive: true, createdBy: "System BootStrap", createdDate: today, updatedBy: "System BootStrap", updatedDate: today).save(flush:true,failOnError:true);
+	
+        // TKI
+        Tki tki1 = new Tki(
+            kkks: kkks3,
+            nip: "187327592735245",
+            namaTkiAwal: "Bedjo",
+            namaTkiAkhir: "Supardjo",
+            alamat: "Alamat Palsu",
+            warganegara: "Indonesia",
+            tempatLahir: "Bandung",
+            //tanggalLahir: "17 Agustus 1945",
+            jenisKelamin: "Laki-laki",
+            pendidikan1: "University of London",
+            pendidikan2: "Edinburgh University",
+            pendidikan3: "-",
+            jenis1: "Bachelor Degree",
+            jenis2: "Doctoral Degree",
+            jenis3: "-",
+            ketPendidikan1: "Barts and The London School of Medicine and Dentistry",
+            ketPendidikan2: "-",
+            ketPendidikan3: "-",
+            ketTambahan: "Military Doctor",
+            pengalaman1: "Iraq",
+            pengalaman2: "Afganishtan",
+            pengalaman3: "Detective Assistant",
+            pengalaman4: "-",
+            pengalaman5: "-",
+            jabatan: "Detective Assistant",
+            alias: "Bejo",
+            createdBy: "System BootStrap",
+            createdDate: today,
+            updatedBy: "System BootStrap",
+            updatedDate: today
+        ).save(flush:true,failOnError:true);
+
+
+        /** PHASE 2 DATA SEEDING **/
+
+        /* AUTHENTICATION */
+		
+        // USERS
+        RptkUser user = RptkUser.findByUsername("kkks3")?:new RptkUser(
+            username: "kkks3",
+            password: "kkks234*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false,
+            idkkks: 4
+        ).save(flush:true,failOnError:true);
+        RptkUser user1 = RptkUser.findByUsername("kkks2")?:new RptkUser(
+            username: "kkks2",
+            password: "kkks234*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false,
+            idkkks: 3
+        ).save(flush:true,failOnError:true);
+        RptkUser user10 = RptkUser.findByUsername("kkks4")?:new RptkUser(
+            username: "kkks4",
+            password: "kkks234*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false,
+            idkkks: 5
+        ).save(flush:true,failOnError:true);
+        RptkUser user11 = RptkUser.findByUsername("kkks5")?:new RptkUser(
+            username: "kkks5",
+            password: "kkks234*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false,
+            idkkks: 6
+        ).save(flush:true,failOnError:true);
+
+        RptkUser user2 = RptkUser.findByUsername("staf")?:new RptkUser(
+            username: "staf",
+            password: "staf147*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false
+        ).save(flush:true,failOnError:true);
+
+        RptkUser user3 = RptkUser.findByUsername("kasubdin")?:new RptkUser(
+            username: "kasubdin",
+            password: "kasubdin147*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false
+        ).save(flush:true,failOnError:true);
+
+        RptkUser user4 = RptkUser.findByUsername("kadin")?:new RptkUser(
+            username: "kadin",
+            password: "kadin147*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false
+        ).save(flush:true,failOnError:true);
+
+        RptkUser user5 = RptkUser.findByUsername("kadiv")?:new RptkUser(
+            username: "kadiv",
+            password: "kadiv147*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false
+        ).save(flush:true,failOnError:true);
+
+        RptkUser user6 = RptkUser.findByUsername("deputi")?:new RptkUser(
+            username: "deputi",
+            password: "deputi147*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false
+        ).save(flush:true,failOnError:true);
+
+        RptkUser user7 = RptkUser.findByUsername("penunjang")?:new RptkUser(
+            username: "penunjang",
+            password: "penunjang147*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false
+        ).save(flush:true,failOnError:true);
+
+        RptkUser user8 = RptkUser.findByUsername("admin")?:new RptkUser(
+            username: "admin",
+            password: "4dm1naDMin",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false
+        ).save(flush:true,failOnError:true);
+
+        RptkUser user9 = RptkUser.findByUsername("kepala")?:new RptkUser(
+            username: "kepala",
+            password: "kepala147*",
+            isOperator:true,
+            accountExpired: false,
+            accountLocked: false,
+            passwordExpired: false
+        ).save(flush:true,failOnError:true);
+
+        // ROLES
+        Role roleAdmin = Role.findByAuthority("ROLE_ADMIN")?:new Role(
+            authority: "ROLE_ADMIN"
+        ).save(flush:true,failOnError:true);
+
+        Role roleKkks = Role.findByAuthority("ROLE_KKKS")?:new Role(
+            authority: "ROLE_KKKS"
+        ).save(flush:true,failOnError:true);
+
+        Role roleStaf = Role.findByAuthority("ROLE_STAF")?:new Role(
+            authority: "ROLE_STAF"
+        ).save(flush:true,failOnError:true);
+
+        Role roleKasubdin = Role.findByAuthority("ROLE_KASUBDIN")?:new Role(
+            authority: "ROLE_KASUBDIN"
+        ).save(flush:true,failOnError:true);
+
+        Role roleKadin = Role.findByAuthority("ROLE_KADIN")?:new Role(
+            authority: "ROLE_KADIN"
+        ).save(flush:true,failOnError:true);
+
+        Role roleKadiv = Role.findByAuthority("ROLE_KADIV")?:new Role(
+            authority: "ROLE_KADIV"
+        ).save(flush:true,failOnError:true);
+
+        Role roleDeputi = Role.findByAuthority("ROLE_DEPUTI")?:new Role(
+            authority: "ROLE_DEPUTI"
+        ).save(flush:true,failOnError:true);
+
+        Role rolePenunjang = Role.findByAuthority("ROLE_PENUNJANG")?:new Role(
+            authority: "ROLE_PENUNJANG"
+        ).save(flush:true,failOnError:true);
+
+        Role roleKepala = Role.findByAuthority("ROLE_KEPALA")?:new Role(
+            authority: "ROLE_KEPALA"
+        ).save(flush:true,failOnError:true);
+
+        Role roleSkk = Role.findByAuthority("ROLE_SKK")?:new Role(
+            authority: "ROLE_SKK" // DIPERLUKAN UNTUK TAHAP 1
+        ).save(flush:true,failOnError:true);
+
+        // USER-ROLE RELATIONSHIPS
+        UserRole ur = UserRole.findByUserAndRole(user, roleKkks)?:new UserRole(
+            user:user,
+            role:roleKkks
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur1 = UserRole.findByUserAndRole(user1, roleKkks)?:new UserRole(
+            user:user1,
+            role:roleKkks
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur20 = UserRole.findByUserAndRole(user10, roleKkks)?:new UserRole(
+            user:user10,
+            role:roleKkks
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur21 = UserRole.findByUserAndRole(user11, roleKkks)?:new UserRole(
+            user:user11,
+            role:roleKkks
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur2 = UserRole.findByUserAndRole(user2, roleStaf)?:new UserRole(
+            user:user2,
+            role:roleStaf
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur3 = UserRole.findByUserAndRole(user3, roleKasubdin)?:new UserRole(
+            user:user3,
+            role:roleKasubdin
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur4 = UserRole.findByUserAndRole(user4, roleKadin)?:new UserRole(
+            user:user4,
+            role:roleKadin
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur5 = UserRole.findByUserAndRole(user5, roleKadiv)?:new UserRole(
+            user:user5,
+            role:roleKadiv
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur6 = UserRole.findByUserAndRole(user6, roleDeputi)?:new UserRole(
+            user:user6,
+            role:roleDeputi
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur7 = UserRole.findByUserAndRole(user7, rolePenunjang)?:new UserRole(
+            user:user7,
+            role:rolePenunjang
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur8 = UserRole.findByUserAndRole(user8, roleAdmin)?:new UserRole(
+            user:user8,
+            role:roleAdmin
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur9 = UserRole.findByUserAndRole(user2, roleSkk)?:new UserRole(
+            user:user2,
+            role:roleSkk
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur10 = UserRole.findByUserAndRole(user3, roleSkk)?:new UserRole(
+            user:user3,
+            role:roleSkk
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur11 = UserRole.findByUserAndRole(user4, roleSkk)?:new UserRole(
+            user:user4,
+            role:roleSkk
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur12 = UserRole.findByUserAndRole(user5, roleSkk)?:new UserRole(
+            user:user5,
+            role:roleSkk
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur13 = UserRole.findByUserAndRole(user6, roleSkk)?:new UserRole(
+            user:user6,
+            role:roleSkk
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur14 = UserRole.findByUserAndRole(user7, roleSkk)?:new UserRole(
+            user:user7,
+            role:roleSkk
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur15 = UserRole.findByUserAndRole(user8, roleSkk)?:new UserRole(
+            user:user8,
+            role:roleSkk
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur16 = UserRole.findByUserAndRole(user9, roleKepala)?:new UserRole(
+            user:user9,
+            role:roleKepala
+        ).save(flush:true,failOnError:true);
+
+        UserRole ur17 = UserRole.findByUserAndRole(user9, roleSkk)?:new UserRole(
+            user:user9,
+            role:roleSkk
+        ).save(flush:true,failOnError:true);
+	
+		// RPTK Kategori
+		new RptkKategori(idKategori:1, namaKategori:"Baru").save(flush:true,failOnError:true)
+		new RptkKategori(idKategori:2, namaKategori:"Perpanjangan").save(flush:true,failOnError:true)
+		new RptkKategori(idKategori:3, namaKategori:"Perpanjangan & Perubahan Nama").save(flush:true,failOnError:true)
+	
+
+          if(Menu.count()<1){
+            /* KKKS */
+            Menu menu1 = new Menu(
+                title: "Beranda",
+                path: "/modules/welcome/index.xhtml",
+                icon: "home",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+
+            // Integrasi Tahap 1
+            Menu menu50 = new Menu(
+                title: "Master Tenaga Kerja",
+                icon: "file-text-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                isParent: true,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu51 = new Menu(
+                title: "TKI",
+                path: "/listView/tki_list.xhtml",
+                icon: "group",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu50,
+                isParent: false,
+                isTahap1: true
+            ).save(flush: true);
+
+            Menu menu52 = new Menu(
+                title: "TKA",
+                path: "/listView/tka_list.xhtml",
+                icon: "group",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu50,
+                isParent: false,
+                isTahap1: true
+            ).save(flush: true);
+
+            Menu menu53 = new Menu(
+                title: "RPTK",
+                icon: "file-text-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                isParent: true,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu31 = new Menu(
+                title: "Daftar RPTK",
+                path: "/listView/rptk_list.xhtml",
+                icon: "file-text-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu53,
+                isParent: false,
+                isTahap1: true
+            ).save(flush: true);
+
+            Menu menu33 = new Menu(
+                title: "Nota Penjelasan",
+                path: "/listView/nota_list.xhtml",
+                icon: "file-text-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu53,
+                isParent: false,
+                isTahap1: true
+            ).save(flush: true);
+
+            Menu menu34 = new Menu(
+                title: "Identitas KKKS",
+                path: "/editView/kkks_manage.xhtml",
+                icon: "file-text-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu53,
+                isParent: false,
+                isTahap1: true
+            ).save(flush: true);
+
+            //Menu menu36 = new Menu(
+            //    title: "Pengunaan TKA",
+            //    path: "/listView/penggunaan_list.xhtml",
+            //    icon: "file-text-o",
+            //    dateCreated: now,
+            //    lastUpdated: now,
+            //    createdBy: "System BootStrap",
+            //    updatedBy: "System BootStrap",
+            //    parent: menu53,
+            //    isParent: false,
+            //    isTahap1: true
+            //).save(flush: true);
+
+            Menu menu37 = new Menu(
+                title: "Jabatan",
+                path: "/listView/jabatan_list.xhtml",
+                icon: "file-text-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu53,
+                isParent: false,
+                isTahap1: true
+            ).save(flush: true);
+
+            Menu menu38 = new Menu(
+                title: "Program Pelatihan",
+                path: "/listView/pelatihan_list.xhtml",
+                icon: "file-text-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu53,
+                isParent: false,
+                isTahap1: true
+            ).save(flush: true);
+
+            Menu menu39 = new Menu(
+                title: "Rekap Struktur",
+                path: "/listView/struktur_list.xhtml",
+                icon: "file-text-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu53,
+                isParent: false,
+                isTahap1: true
+            ).save(flush: true);
+
+            Menu menu40 = new Menu(
+                title: "Program Pertukaran",
+                path: "/listView/pertukaran_list.xhtml",
+                icon: "file-text-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu53,
+                isParent: false,
+                isTahap1: true
+            ).save(flush: true);
+
+            Menu menu41 = new Menu(
+                title: "Timesharing",
+                path: "/listView/timesharing_list.xhtml",
+                icon: "file-text-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu53,
+                isParent: false,
+                isTahap1: true
+            ).save(flush: true);
+
+            Menu menu2 = new Menu(
+                title: "Pengajuan RPTK",
+                icon: "files-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                isParent: true,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu3 = new Menu(
+                title: "Riwayat Pengajuan",
+                path: "/modules/rptk/pengajuan/list_pengajuan.xhtml",
+                icon: "history",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu2,
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu4 = new Menu(
+                title: "Tambah Pengajuan",
+                path: "/modules/rptk/pengajuan/add.xhtml",
+                icon: "plus-circle",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu2,
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu5 = new Menu(
+                title: "Upload Surat",
+                path: "/modules/rptk/pengajuan/upload_surat.xhtml",
+                icon: "upload",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu2,
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu6 = new Menu(
+                title: "Pengajuan IMTA",
+                icon: "files-o",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                isParent: true,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu7 = new Menu(
+                title: "Riwayat Pengajuan",
+                path: "/modules/imta/pengajuan/list_pengajuan.xhtml",
+                icon: "history",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu6,
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu8 = new Menu(
+                title: "Tambah Pengajuan",
+                path: "/modules/imta/pengajuan/add.xhtml",
+                icon: "plus-circle",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                parent: menu6,
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+
+            /* SKK Migas */
+            Menu menu11 = new Menu(
+                title: "Ambil Task Pengajuan",
+                path: "/modules/dashboard/list_tiket.xhtml", // .xhtml nya belum ada, silahkan buat sendiri untuk tabel dari dashboard
+                icon: "ticket",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu12 = new Menu(
+                title: "Dashboard",
+                path: "/modules/dashboard/index.xhtml",
+                icon: "dashboard",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu13 = new Menu(
+                title: "Riwayat Pengajuan RPTK-IMTA",
+                path: "/modules/dashboard/list_pengajuan.xhtml",
+                icon: "history",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu14 = new Menu(
+                title: "Upload Surat Basah",
+                path: "/modules/imta/pengajuan/upload_surat_basah.xhtml",
+                icon: "upload",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+
+            Menu menu15 = new Menu(
+                title: "List TKA",
+                path: "/modules/dashboard/list_tka.xhtml",
+                icon: "table",
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+                isParent: false,
+                isTahap1: false
+            ).save(flush: true);
+        
+            new RoleMenu(
+                menu: menu1,
+                role: roleKkks,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+        
+            new RoleMenu(
+                menu: menu2,
+                role: roleKkks,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+
+            new RoleMenu(
+                menu: menu6,
+                role: roleKkks,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+
+            new RoleMenu(
+                menu: menu50,
+                role: roleKkks,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+
+            new RoleMenu(
+                menu: menu53,
+                role: roleKkks,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+
+            new RoleMenu(
+                menu: menu11,
+                role: roleStaf,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+
+            new RoleMenu(
+                menu: menu11,
+                role: rolePenunjang,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+        
+            new RoleMenu(
+                menu: menu12,
+                role: roleSkk,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+        
+            new RoleMenu(
+                menu: menu13,
+                role: roleSkk,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+        
+            new RoleMenu(
+                menu: menu14,
+                role: roleStaf,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+
+            new RoleMenu(
+                menu: menu15,
+                role: roleSkk,
+                dateCreated: now,
+                lastUpdated: now,
+                createdBy: "System BootStrap",
+                updatedBy: "System BootStrap",
+            ).save(flush: true)
+        }   
+		  /*
+		  // dummy data utk kkk3 yg login dengan id kkks 3
+		  for (int i=0; i<10;i++){
+			  new Jabatan(levels:i,rptk:10,halaman:1,ketTambahan:"Komitmen " +i, namaJabatan:"Jabatan " + i,batasWaktu:"2017").save()
+			  def birthDay = new Date()
+			  birthDay.setYear(75 + i)
+			  def tk4 = new Tka(kkks:3, nip:"nip-"+i, namaTkaAwal:"TKA"+i, pendidikan1: "S3", pengalaman1: "pengalaman " + 1, tanggalLahir: birthDay).save()
+			  new ImtaEpo(tka: tk4, isActive: true, createdBy: "System BootStrap", createdDate: today, updatedBy: "System BootStrap", updatedDate: today).save(flush:true,failOnError:true);
+			  new Tki(kkks:3, nip:"nip-"+i, namaTkiAwal:"TKI"+i,namaTkiTengah:"Tengah"+i,namaTkiAkhir:"Akhir"+i).save()
+		  }
+		    */      
+        if(Requestmap.count()<1){
+            for (String url in [
+                '/',
+                '/index',
+                '/index.gsp',
+                '/**/favicon.ico',
+                '/**/style.css',
+                '/**/partials/template/welcome.html',
+                '/**/js/**',
+                '/**/css/**',
+                '/**/images/**',
+                '/**/src/**',
+                '/**/skins/**',
+                '/**/lib/**',
+                '/login/*',
+                '/logout/*',
+                '/admin/**'
+                ]) {
+                new Requestmap(url: url, configAttribute: 'IS_AUTHENTICATED_ANONYMOUSLY').save(failOnError:true)
+            }
+            new Requestmap(url: '/**', configAttribute: 'ROLE_ADMIN, ROLE_SKK, ROLE_KKKS').save(failOnError:true)
+        }
+    }
+    
+    def destroy = {
+    }
+    
+	def registerJsonConfig(){
+		
+		JSON.createNamedConfig('riwayatImtaUpload'){ config ->
+			config.registerObjectMarshaller(ImtaUpload) { ImtaUpload iu ->
+				def kkks = [
+					namaKkks : iu.imtaPengajuan.kkks.namaKkks
+				]
+				
+				def selectedImtaPengajuan = ImtaPengajuan.get(iu.imtaPengajuan.idImta)
+				//def selectedImtaSurat = ImtaSurat.findAll{imtaPengajuan == selectedImtaPengajuan}
+
+				//def imtaSurat =  [
+					//pathFormulirPersetujuan : selectedImtaSurat.formulirPersetujuan[0],
+					//pathSuratPersetujuan : selectedImtaSurat.suratPersetujuan[0],
+					//pathSuratRekomendasi : selectedImtaSurat.suratRekomendasi[0]
+				//]
+				
+				
+				def imtaPengajuan =  [
+					pathFormulirPersetujuan : selectedImtaPengajuan.pathPersetujuan,
+					pathSuratPersetujuan : selectedImtaPengajuan.pathSuratPengajuan,
+					pathSuratRekomendasi : selectedImtaPengajuan.pathRekomendasi
+				]
+
+				String fullname = ''
+				println fullname
+					try{
+						if (iu.imtaPengajuan?.tka?.namaTkaAwal?.trim()){
+						fullname += iu.imtaPengajuan.tka.namaTkaAwal
+						println fullname
+						}
+					}
+					catch(FileNotFoundException e){
+					}
+					
+					try{
+						if (iu.imtaPengajuan?.tka?.namaTkaTengah?.trim()){
+						fullname += ' ' + iu.imtaPengajuan.tka.namaTkaTengah
+						println fullname
+						}
+					}
+					catch(FileNotFoundException e){
+					}
+					
+					try{
+						if (iu.imtaPengajuan?.tka?.namaTkaAkhir?.trim()){
+						fullname += ' ' + iu.imtaPengajuan.tka.namaTkaAkhir
+						println fullname
+						}
+					}
+					catch(FileNotFoundException e){
+					}
+
+				
+				def tka = null
+				if(iu.imtaPengajuan.tka != null){
+					 tka = [
+						idTka : iu.imtaPengajuan.tka?.idTka,
+						nip : iu.imtaPengajuan.tka?.nip
+					]
+				}
+
+				def obj = [
+					idImta      	: iu.imtaPengajuan.idImta,
+					pathDitjenMigas : iu.pathDitjenMigas,
+					pathDisnakertrans: iu.pathDisnakertrans,
+					pathFormulirPersetujuan : imtaPengajuan.pathFormulirPersetujuan,
+					pathSuratPersetujuan : imtaPengajuan.pathSuratPersetujuan,
+					pathSuratRekomendasi : imtaPengajuan.pathSuratRekomendasi,
+					noPengajuan		:iu.imtaPengajuan.noPengajuan,
+					nama			: fullname,
+					idTka			: tka?.idTka,
+					nip				: tka?.nip,
+					namaKkks		: kkks.namaKkks,
+					status			: iu.imtaPengajuan.status,
+					createdBy       : iu.createdBy,
+					createdDate     : iu.createdDate,
+					updatedBy		: iu.updatedBy,
+					updatedDate		: iu.updatedDate
+				]
+				return obj
+			}
+		}
+		
+		JSON.createNamedConfig('riwayatImtaSuratBasah'){ config ->
+			config.registerObjectMarshaller(ImtaSurat) { ImtaSurat iu ->
+				println "riwayat imta surat basah"
+				def kkks = null
+				def tka = null
+				
+				println("namaKKs = "+iu.imtaPengajuan?.kkks?.namaKkks)
+				if(iu.imtaPengajuan?.kkks?.namaKkks != null){
+				kkks = [
+					namaKkks : iu.imtaPengajuan.kkks.namaKkks
+				]
+				}
+				
+				String fullname = ''
+					try{
+						if (iu.imtaPengajuan?.tka?.namaTkaAwal?.trim()){
+						fullname += iu.imtaPengajuan.tka.namaTkaAwal
+						}
+					}
+					catch(FileNotFoundException e){
+					}
+					
+					try{
+						if (iu.imtaPengajuan?.tka?.namaTkaTengah?.trim()){
+						fullname += ' ' + iu.imtaPengajuan.tka.namaTkaTengah
+						}
+					}
+					catch(FileNotFoundException e){
+					}
+					
+					try{
+						if (iu.imtaPengajuan?.tka?.namaTkaAkhir?.trim()){
+						fullname += ' ' + iu.imtaPengajuan.tka.namaTkaAkhir
+						}
+					}
+					catch(FileNotFoundException e){
+					}
+
+				println("idTka = "+iu.imtaPengajuan.tka.idTka)
+				println("nip = "+iu.imtaPengajuan.tka.nip)
+				if(iu.imtaPengajuan.tka.idTka != null || iu.imtaPengajuan.tka.nip != null){
+				tka = [
+						idTka : iu.imtaPengajuan.tka.idTka,
+						nip : iu.imtaPengajuan.tka.nip
+					]
+				}
+				
+				println ("nama =" + fullname)
+				println  ("noPengajuan =" + iu.imtaPengajuan.noPengajuan)
+				println  ("formulirPersetujuan =" + iu.formulirPersetujuan)
+				println  ("suratPersetujuan =" + iu.suratPersetujuan)
+				println  ("suratRekomendasi =" + iu.suratRekomendasi)
+
+				def obj = [
+					idImta      	: iu.imtaPengajuan.idImta,
+					formulirPersetujuan: iu.formulirPersetujuan,
+					suratPersetujuan : iu.suratPersetujuan,
+					suratRekomendasi: iu.suratRekomendasi,
+					noPengajuan		:iu.imtaPengajuan.noPengajuan,
+					nama			: fullname,
+					idTka			: tka.idTka,
+					nip				: tka.nip,
+					namaKkks		: kkks.namaKkks,
+					status			: iu.imtaPengajuan.status,
+					createdBy       : iu.createdBy,
+					createdDate     : iu.createdDate,
+					updatedBy		: iu.updatedBy,
+					updatedDate		: iu.updatedDate,
+					pathPersetujuan : iu.imtaPengajuan.pathPersetujuan,
+					pathRekomendasi : iu.imtaPengajuan.pathRekomendasi,
+					noSuratPersetujuan : iu.imtaPengajuan.noSuratPersetujuan,
+					tglSuratPersetujuan : iu.imtaPengajuan.tglSuratPersetujuan,
+					noSuratRekomendasi : iu.imtaPengajuan.noSuratRekomendasi,
+					tglSuratRekomendasi : iu.imtaPengajuan.tglSuratRekomendasi
+				]
+				return obj
+			}
+		}
+		
+		JSON.createNamedConfig('detailRptk'){ config ->
+			config.registerObjectMarshaller(RptkPengajuan) { RptkPengajuan o ->
+				def rptk = null
+				if(o.rptk != null){
+					 rptk = [
+						id_rptk : o.rptk.idRptk
+					]
+				}
+				
+				
+				def pengajuanrptk = [
+					idPengajuan : o.idPengajuan,
+					noPengajuan : o.noPengajuan,
+					rptk : rptk,
+					noSurat : o.noSurat,
+					tglSurat : o.tglSurat,
+					perihalSurat : o.perihalSurat,
+					//periode : o.periode,
+					kkks : o.kkks,
+					jenisKkks : o.jenisKkks,
+					status : o.status,
+					parentRptk : o.parentRptk,
+					suratPersetujuan : o.suratPersetujuan,
+					suratRekomendasi : o.suratRekomendasi,
+					suratPernyataan : o.suratPernyataan,
+					rekomendasiDitjenMigas : o. rekomendasiDitjenMigas,
+					rekomendasiKemenakertrans : o.rekomendasiKemenakertrans,
+					suratPermohonan : o.suratPermohonan,
+					createdBy : o.createdBy,
+					type: o.type,
+					createdDate : o.createdDate,
+					updatedBy : o.updatedBy,
+					updatedDate : o.updatedDate,
+					noSuratPersetujuan : o.noSuratPersetujuan,
+					noSuratRekomendasi : o.noSuratRekomendasi,
+					tglSuratPersetujuan : o.tglSuratPersetujuan,
+					tglSuratRekomendasi : o.tglSuratRekomendasi
+					
+				]
+				
+				return pengajuanrptk
+
+			}
+		}
+		
+		JSON.createNamedConfig('listTka'){ config ->
+			config.registerObjectMarshaller(Tka) { Tka tka ->
+
+				def obj = [
+					alamat: tka.alamat,
+					createdBy: tka.createdBy,
+					createdDate: tka.createdDate,
+					idTka: tka.idTka,
+					namaTkaAkhir: tka.namaTkaAkhir,
+					namaTkaAwal: tka.namaTkaAwal,
+					namaTkaTengah: tka.namaTkaTengah,
+					nip: tka.nip,
+					tanggalLahir: tka.tanggalLahir,
+					tempatLahir: tka.tempatLahir,
+					updatedBy: tka.updatedBy,
+					updatedDate: tka.updatedDate,
+					warganegara: tka.warganegara,
+					namaKkks : tka.kkks?.namaKkks
+				]
+				return obj
+
+			}
+
+		}
+		
+		JSON.createNamedConfig('detailImta'){ config ->
+			config.registerObjectMarshaller(ImtaPengajuan) { ImtaPengajuan o ->
+
+			def jsonResult = [
+			id : o.idImta,
+	        idImta      : o.idImta,
+	        noPengajuan : o.noPengajuan,
+	        noSurat     : o.noSurat,
+			perihal     : o.perihal,
+			tglSurat	: o.tglSurat,
+	        periode     : o.periode,
+	        pathSuratPengajuan : o.pathSuratPengajuan,
+			pathPersetujuan : o.pathPersetujuan,
+			pathRekomendasi : o.pathRekomendasi,
+	        status      : o.status,         
+			namaTkaAwal : o.namaTkaAwal,
+			namaTkaTengah : o.namaTkaTengah,
+			namaTkaAkhir : o.namaTkaAkhir,
+			alamat : o.alamat,
+			wargaNegara : o.wargaNegara,
+			tempatLahir : o.tempatLahir,
+			tanggalLahir : o.tanggalLahir,
+			jenisKelamin : o.jenisKelamin,
+			namaJabatan : o.namaJabatan,
+			namaTkiAwal : o.namaTkiAwal,
+			namaTkiTengah : o.namaTkiTengah,
+			namaTkiAkhir : o.namaTkiAkhir,
+			type : o.type,
+			oleh :o.oleh,
+	        kkks        : [
+				id 		: o.kkks?.idKkks,
+	            idKkks  : o.kkks?.idKkks,
+	            namaKkks : o.kkks?.namaKkks
+	        ],
+	        tka         : null,
+	        tki			: null ,
+	        jabatan     : null
+		]
+		
+		if(o.tka != null){
+			jsonResult.tka = [
+				idTka : o.tka?.idTka,
+				nip : o.tka?.nip,
+				namaTkaAwal : o.tka?.namaTkaAwal,
+				namaTkaTengah : o.tka?.namaTkaTengah,
+				namaTkaAkhir : o.tka?.namaTkaAkhir,
+				
+			]
+		}
+		if(o.tki != null){
+			jsonResult.tki = [
+	                idTki : o.tki?.idTki,
+	                namaTkiAwal : o.tki?.namaTkiAwal,
+	                namaTkiTengah : o.tki?.namaTkiTengah,
+	                namaTkiAkhir : o.tki?.namaTkiAkhir,
+	                nip : o.tki?.nip
+	            ]
+		}
+		if(o.jabatan != null){
+			jsonResult.jabatan = [
+	            idJabatan : o.jabatan?.idJabatan,
+	            namaJabatan : o.jabatan?.namaJabatan,
+	            ketTambahan : o.jabatan?.ketTambahan,
+	            namaStruktur : o.jabatan?.halaman?.struktur?.namaStruktur
+			]
+		}
+		jsonResult.posisi      = jsonResult.jabatan?.namaJabatan
+		jsonResult.namaKkks    = jsonResult.kkks?.namaKkks
+		jsonResult.idTka    	= jsonResult.tka?.idTka
+		jsonResult.nip    	= jsonResult.tka?.nip
+		
+		
+					String fullname = ''
+					try{
+						if (o.tka?.namaTkaAwal?.trim()){
+						fullname += o.tka.namaTkaAwal
+						}
+					}
+					catch(FileNotFoundException e){
+					}
+					
+					try{
+						if (o.tka?.namaTkaTengah?.trim()){
+						fullname += ' ' + o.tka.namaTkaTengah
+						}
+					}
+					catch(FileNotFoundException e){
+					}
+					
+					try{
+						if (o.tka?.namaTkaAkhir?.trim()){
+						fullname += ' ' + o.tka.namaTkaAkhir
+						}
+					}
+					catch(FileNotFoundException e){
+					}
+		
+		
+		jsonResult.nama 		= fullname
+		println "fullname = "+jsonResult.nama
+		println "posisi = "+jsonResult.idTka
+		println "nama KKs = "+jsonResult.namaKkks
+        
+				return jsonResult
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+
+
+			}
+
+		}
+
+        JSON.createNamedConfig('EmployeeTypeRole'){ config ->
+            config.registerObjectMarshaller(EmployeeTypeRole) { EmployeeTypeRole etr ->
+                def obj = [
+                    id : etr.id,
+                    employeeType : etr.employeeType,
+                    role : [
+                        id : etr.role.id,
+                        authority : etr.role.authority
+                    ]
+                ]
+            }
+        }
+
+		JSON.createNamedConfig('riwayat'){ config ->
+			config.registerObjectMarshaller(ImtaPengajuan) { ImtaPengajuan imta ->
+				String fullname = ''
+				if (imta.namaTkaAwal?.trim()){
+					fullname += imta.tka.namaTkaAwal
+				}
+
+				if (imta.namaTkaTengah?.trim()){
+					fullname += ' ' + imta.tka.namaTkaTengah
+				}
+				if (imta.namaTkaAkhir?.trim()){
+					fullname += ' ' + imta.tka.namaTkaAkhir
+				}
+
+				def obj = [
+					idImta      : imta.idImta,
+                    idTka       : imta.tka.idTka,
+					noPengajuan : imta.noPengajuan,
+					noSurat     : imta.noSurat,
+                    tglSurat    : imta.tglSurat,
+                    perihal     : imta.perihal,
+					namaKkks    : imta.kkks?.namaKkks,
+					nama        : fullname,
+					type        : imta.type,
+					posisi      : imta.jabatan?.namaJabatan,
+					periode     : imta.periode,
+					status      : imta.status,
+					createdDate : imta.createdDate,
+					updatedDate : imta.updatedDate,
+					oleh		: imta.oleh,
+                    idTka       : imta.tka.idTka
+
+				]
+				return obj
+
+			}
+
+		}
+		
+		JSON.createNamedConfig('riwayatSuratBasah'){ config ->
+			config.registerObjectMarshaller(ImtaPengajuan) { ImtaPengajuan imta ->
+				String fullname = ''
+				if (imta.namaTkaAwal?.trim()){
+					fullname += imta.tka.namaTkaAwal
+				}
+
+				if (imta.namaTkaTengah?.trim()){
+					fullname += ' ' + imta.tka.namaTkaTengah
+				}
+				if (imta.namaTkaAkhir?.trim()){
+					fullname += ' ' + imta.tka.namaTkaAkhir
+				}		
+					
+				def tka = null
+				if(imta.tka.idTka != null || imta.tka.nip != null){
+					tka = [
+						idTka : imta.tka.idTka,
+						nip : imta.tka.nip
+					]
+				}
+
+				def obj = [
+					idImta      : imta.idImta,
+					noPengajuan : imta.noPengajuan,
+					noSurat     : imta.noSurat,
+					namaKkks    : imta.kkks?.namaKkks,
+					nama        : fullname,
+					type        : imta.type,
+					posisi      : imta.jabatan?.namaJabatan,
+					periode     : imta.periode,
+					status      : imta.status,
+					createdDate : imta.createdDate,
+					updatedDate  : imta.updatedDate,					
+					idTka			: tka.idTka,
+					nip				: tka.nip,
+					pathPersetujuan : imta.pathPersetujuan,
+					pathRekomendasi : imta.pathRekomendasi
+				]
+				return obj
+			}
+
+		}
+		
+		
+		JSON.createNamedConfig('rptkPosisi'){ config ->
+			config.registerObjectMarshaller(RptkPosisi) { RptkPosisi o ->
+				return [
+					idPosisi        : o.idPosisi,
+					noPosisi        : o.noPosisi,
+					status          : o.status,
+					keterangan       : o.keterangan,
+					ketStatus       : o.keterangan,
+					pejabat         :  [
+						jabatan     : [
+							idJabatan : o.pejabat?.jabatan?.idJabatan,
+							namaJabatan : o.pejabat?.jabatan?.namaJabatan,
+							ketTambahan : o.pejabat?.jabatan?.ketTambahan,
+							namaStruktur : o.pejabat?.jabatan?.halaman?.struktur?.namaStruktur,
+							batasWaktu : o.pejabat?.jabatan?.batasWaktu
+						]
+					],
+					penggunaan      : [
+							jabatan     : [
+								idJabatan : o.penggunaan?.jabatan?.idJabatan,
+								namaJabatan : o.penggunaan?.jabatan?.namaJabatan,
+								ketTambahan : o.penggunaan?.jabatan?.ketTambahan,
+								namaStruktur : o.penggunaan?.jabatan?.halaman?.struktur?.namaStruktur,
+								batasWaktu : o.penggunaan?.jabatan?.batasWaktu
+							]
+					]
+					
+				]
+				
+				
+
+			}
+
+		}
+		
+		
+		JSON.createNamedConfig('customJabatan'){ config ->
+			config.registerObjectMarshaller( Jabatan ) { Jabatan jabatan ->
+			
+			
+			def obj = [
+				idJabatan      : jabatan.idJabatan,
+				namaJabatan : jabatan.namaJabatan,
+				namaStruktur     : jabatan.halaman.struktur.namaStruktur,
+				ketTambahan        : jabatan.ketTambahan,
+                                                                        levels : jabatan.levels,
+                                                                        rptk : jabatan.rptk
+			]
+			
+			return obj
+		}
+		
+		}
+		JSON.createNamedConfig('imtaSurat'){ config ->
+			config.registerObjectMarshaller( ImtaSurat ) { ImtaSurat imta ->
+			
+			
+				def obj = [
+					idImta : imta.imtaPengajuan.idImta,
+					suratPersetujuan : imta.suratPersetujuan,
+					suratRekomendasi     : imta.suratRekomendasi,
+					formulirPersetujuan     : imta.formulirPersetujuan,
+					createdBy        : imta.createdBy,
+					createdDate:imta.createdDate,
+					updatedBy:imta.updatedBy,
+					updatedDate:imta.updatedDate
+				]
+				
+				return obj
+			}
+		}
+		JSON.createNamedConfig('imtaMom'){ config ->
+			config.registerObjectMarshaller( ImtaMom ) { ImtaMom mom ->
+			
+			
+			def obj = [
+
+				idMom : mom.idMom,
+				id_imta : mom.imtaPengajuan.idPengajuan,
+				namaMom : mom.namaMom,
+				tanggalMom : mom.tanggalMom,
+				pathMom : mom.pathMom,
+				createdDate : mom.createdDate,
+				updatedDate : mom.updatedDate,
+				createdBy : mom.createdBy,
+				updatedBy : mom.updatedBy,
+				noMom : mom.noMom
+			]
+			
+			return obj
+		}
+		
+		}
+	}
+	
+	def generateDummyData(){
+        new Kkks(namaKkks:"KKKS ABC").save()
+		new Rptk(kkks:1,kuartal1:1,
+			kuartal2:3,
+			tahun1:2015,
+			tahun2:2018, stLampiran1:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran2:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran3:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran4:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran5:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran6:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran7:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran8:"/Sites/testrptk/Desain_dashboard.xlsx").save()
+		new Tka(idTka:"1",nip:"20151116001",kkks:"1",namaTkaAwal:"Richardo",namaTkaTengah:"Manuel",namaTkaAkhir:"Salampessy",createdBy:"Rekhas",
+			warganegara:"US",alamat:"Ir. Juanda").save()
+        
+        new Struktur(rptk:1,idStruktur:1, namaStruktur:"Struktur 1").save()
+		new Struktur(rptk:1,idStruktur:2, namaStruktur:"Struktur 2").save()
+		
+		new Halaman(idHalaman:1,struktur:1, noHalaman: 1).save()
+		new Halaman(idHalaman:2,struktur:2, noHalaman: 2).save()
+		new Jabatan(levels:"2",rptk:1,halaman:1,ketTambahan:"Komitmen1", namaJabatan:"Jabatan 1",batasWaktu:"2014").save()
+		new Jabatan(levels:"2",rptk:1,halaman:2,ketTambahan:"Komitmen2", namaJabatan:"Jabatan 2",batasWaktu:"2015").save()
+		new Jabatan(levels:"2",rptk:1,halaman:1,ketTambahan:"Komitmen3", namaJabatan:"Jabatan 3",batasWaktu:"2016").save()
+		/* CAUSING ERROR
+		for (int i=0; i<5;i++){
+			new Tka(kkks:1, nip:"1-"+i, namaTkaAwal:"TKA"+i).save()
+			new Tki(kkks:1, nip:"1-"+i, namaTkiAwal:"TKI"+i,namaTkiTengah:"Tengah"+i,namaTkiAkhir:"Akhir"+i).save()
+		}
+        */
+		
+		Kkks kkks1 = new Kkks(namaKkks:"KKKS ABCD")
+		kkks1.save()
+		
+
+		
+		new ImtaPengajuan(kkks:1, namaTkaAwal:"Budi A.", type:"Baru", noPengajuan:"IMTA-00001",noSurat:"Surat satu",periode:"2-12 s.d. 1-12",posisi:"kadep", tka:1, jabatan:1, status:"Dalam Proses" ).save(flush:true)
+		new ImtaPengajuan(kkks:1, noPengajuan:"IMTA-00002",noSurat:"123",type:"Baru",periode:"2-12 s.d. 1-12",posisi:"kadep",tka:1, jabatan:3, status:"Diminta Perbaikan").save(flush:true)
+		new ImtaPengajuan(kkks:1, namaTkaAwal:"Budi A.", noPengajuan:"IMTA-00003",type:"Baru",noSurat:"Surat satu",periode:"2-12 s.d. 1-12",posisi:"kadep", tka:1, jabatan:1, status:"Diajukan" ).save(flush:true)
+		new ImtaPengajuan(kkks:1, namaTkaAwal:"Budi A.", noPengajuan:"IMTA-00004",type:"Baru",noSurat:"Surat satu",periode:"2-12 s.d. 1-12",posisi:"kadep", tka:1, jabatan:1, status:"Draft" ).save(flush:true)
+		new ImtaPengajuan(kkks:1, namaTkaAwal:"Budi A.", noPengajuan:"IMTA-00005",type:"Baru",noSurat:"Surat satu",periode:"2-12 s.d. 1-12",posisi:"kadep", tka:1, jabatan:1, status:"Disetujui (Lengkap)" ).save(flush:true)
+		new ImtaPengajuan(kkks:1, namaTkaAwal:"Budi A.", noPengajuan:"IMTA-00006",type:"Baru",noSurat:"Surat satu",periode:"2-12 s.d. 1-12",posisi:"kadep", tka:1, jabatan:1, status:"Disetujui (Belum Lengkap)" ).save(flush:true)
+		new ImtaPengajuan(kkks:1, namaTkaAwal:"Budi A.", noPengajuan:"IMTA-00007",type:"Baru",noSurat:"Surat satu",periode:"2-12 s.d. 1-12",posisi:"kadep", tka:1, jabatan:1, status:"Dalam Proses" ).save(flush:true)
+		new ImtaPengajuan(kkks:1, noPengajuan:"IMTA-00008",type:"Baru",noSurat:"Surat 4",periode:"2-12 s.d. 1-12",posisi:"kadep",tka:1, jabatan:3, status:"Diminta Perbaikan").save(flush:true)
+		new ImtaPengajuan(kkks:1, namaTkaAwal:"Budi A.", noPengajuan:"IMTA-00009",type:"Baru",noSurat:"Surat satu",periode:"2-12 s.d. 1-12",posisi:"kadep", tka:1, jabatan:1, status:"Diajukan" ).save(flush:true)
+		new ImtaPengajuan(kkks:1, namaTkaAwal:"Budi A.", noPengajuan:"IMTA-00010",type:"Baru",noSurat:"Surat satu",periode:"2-12 s.d. 1-12",posisi:"kadep", tka:1, jabatan:1, status:"Draft" ).save(flush:true)
+		new ImtaPengajuan(kkks:1, namaTkaAwal:"Budi A.", noPengajuan:"IMTA-00011",type:"Baru",noSurat:"Surat satu",periode:"2-12 s.d. 1-12",posisi:"kadep", tka:1, jabatan:1, status:"Disetujui (Lengkap)" ).save(flush:true)
+		new ImtaPengajuan(kkks:1, namaTkaAwal:"Budi A.", noPengajuan:"IMTA-00012",type:"Baru",noSurat:"Surat satu",periode:"2-12 s.d. 1-12",posisi:"kadep", tka:1, jabatan:1, status:"Disetujui (Belum Lengkap)" ).save(flush:true)
+		new ImtaDocument(pathPassport:"test",idImta:1).save(flush:true)
+		for (int i=0; i<10;i++){
+			new Icon(halaman:1, tipe:"jabatan", idObj:2+i, posX:1, posY:'A', isFake:false, idAtasan:0).save()
+			new Penggunaan(jabatan:1+i).save()
+			new Pejabat(jabatan:2+i).save()
+			new Pendampingan(penggunaan:i+1).save()
+			new Pelatihan(penggunaan:i+1).save()
+			new Mentoring(penggunaan:i+1).save()
+			new Pertukaran(penggunaan:i+1).save()
+		}
+		new RptkPosisi(idPosisi:1,rptk:1,pejabat:1,noPosisi:"1",keterangan:"keterangan 1",status:"Disetujui",pengisi:"TKA",kategoriRptk:"Perpanjangan").save()
+		new RptkPosisi(idPosisi:2,rptk:1,penggunaan:1,noPosisi:"2",keterangan:"",status:"Disetujui",pengisi:"TKA",kategoriRptk:"Baru").save()
+		new RptkPosisi(idPosisi:3,rptk:1,penggunaan:1,noPosisi:"3",keterangan:"",status:"Disetujui",pengisi:"TKA",kategoriRptk:"Perpanjangan & Perubahan Nama").save()
+		new RptkPosisi(idPosisi:4,rptk:1,penggunaan:1,noPosisi:"4",keterangan:"",status:"Belum Disetujui",pengisi:"TKA",kategoriRptk:"Perpanjangan & Perubahan Nama").save()
+		new RptkPosisi(idPosisi:5,rptk:1,penggunaan:1,noPosisi:"5",keterangan:"",status:"Disetujui",pengisi:"TKA",kategoriRptk:"Perpanjangan").save()
+        
+        //template surat
+		//imta
+		def imtaTemplateSrtRekomendasi = "Nomor : SRT-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /SKKD1000/{tahun}/S8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		" Jakarta, {tanggal_bulan_tahun}<br>Lampiran : Seperti tersebut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yth.<br>Hal : Rekomendasi {perpanjangan/permohonan} IMTA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Direktorat Jenderal MIGAS<br>&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Gedung Plaza Centris MIGAS<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jalan H.R. Rasuna Said Kav. B-5<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jakarta 12910<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp; u.p. Direktur Pembinaan Program MIGAS<br><br>Bersama ini kami sampaikan surat {nama_kkks} No. {no_surat} tanggal {tanggal_surat}, berikut lampiran-lampirannya. "+
+		"Perihal {perihal} :<br><br>Nama&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {nama_tka}<br>Tanggal lahir : {ttl_tka}<br>Jabatan Lama :<br>Jabatan Baru&nbsp; : {posisi}<br>Kebangsaan : {kebangsaan}<br>Nomor Paspor : {no_paspor}"+
+		"<br>Perusahaan : {nama_kkks}<br>Pengikut : -<br><br>Perusahaan tersebut di atas adalah Kontraktor Kontrak Kerja Sama.<br><br>Dalam"+
+		"rangka pemenuhan kebutuhan tenaga kerja untuk kelangsungan operasi "+
+		"{nama_kkks}, SKK Migas dapat menyetujui penggunaan TKA dimaksud. "+
+		"Selanjutnya, kami mengharapkan agar surat pemohonan tersebut di atas"+ 
+		"dapat diproses lebih lanjut sesuai ketentuan perundangan yang berlaku ("+ 
+		"termasuk Peraturan Menteri ESDM No. 31 tahun 2014 tentang Ketentuan dan"+ 
+		"Tata Cara Penggunaan Tenaga Kerja Asing dan Pengembangan Tenaga Kerja"+ 
+		"Indonesia pda Kegiatan usaha minyak dan gas bumi) dan seusai kewenangan "+
+		"Saudara untuk mendapatkan izin yang diperlukan.<br><br>Atas kerjasama serta bantuan Saudara, Kami ucapkan terima kasih.<br><br>an Kepala Satuan Kerja Khsus Pelaksana<br>"+
+		"Kegiatan Usaha Hulu Minyak dan Gas Bumi<br>Kepala Divisi Sumber Daya Manusia<br><br>Budi Arman<br><br>Tembusan :<br>VP Human Resources {nama_kkks}"
+
+		def imtaTemplateSrtPersetujuan = "Nomor : SRT -&nbsp;&nbsp;&nbsp; / SKDD1000/{tahun}/S8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jakarta, {tanggal_bulan_tahun}<br>"+
+		"Lampiran : -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Yth.<br>Hal : {perpanjangan/permohonan} Penggunaan TKA&nbsp;&nbsp;"+
+		"&nbsp; {nama_kkks}<br>dan Pindah Jabatan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp"+
+		";&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ................................<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ................................<br>"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "+
+		"................................<br><br>Sehubungan dengan surat {nama_kkks} No. {no_surat} tanggal {tanggal_surat}, Perihal {perihal}, berdasarkan hasil"+
+		" evaluasi data yang ada, SKK Migas menyetujui :<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {nama_tka}<br><br>Untuk diberikan perpanjangan jabatan {posisi} sampai dengan {periode akhir}.<br><br>"+
+		" Berdasarkan persetujuan tersebut kami ingatkan bahwa :<br>1. Sesuai dengan UU No. 13 tahun 2003 pasal 45, Saudara harus menunjuk tenaga kerja warga negara "+
+		" Indonesia sebagai tenaga pendamping TKa yang dipekerjakan untuk alih teknologi dan alih keahlian tenaga kerja asing, dan melaksanakan pendidikan dan pelatihan"+
+		" kerja bagi tenaga kerja Indonesia yang sesuai dengan kualifikasi jabatan yang diduduki oleh tenaga kerja asing.<br>2. Agar Saudara mematuhi ketentuan-ketentuan "+
+		" yang terdapat dalam Peraturan Menteri ESDM No. 31 tahun 2013 tanggal 24 Oktober 2013 tentang Ketentuan dan Tata Cara Penggunaan Tenaga Kerja Asing dan "+
+		" Pengembangan Tenaga Kerja Indonesia pada Kegiatan Usaha Minyak dan Gas Bumi. Selanjutnya agar Saudara memproses lebih lanjut kepada Direktorat Jendral MIGAS "+
+		" untuk mendapatkan rekomendasi izin kerja yang diperlukan.<br>3. Agar total renumerasi yang dibebankan ke biaya operasi mengacu kepada ketentuan dalam Peraturan"+
+		" Menteri Keuangan Nomor : 258/PMK.011/2011 tentang Batasan Maksimum BIaya Renumerasi Tenaga Kerja Asing untuk Kontraktor Kerja Sama Minyak dan Gas Bumi.<br>4."+
+		" Sebagai bentuk pengawasan dan pengendalian TKA, Saudara agar menyampaikan hal-hal sebagai berikut :<br>- Laporan tahunan program mentoring yang terdiri dari "+
+		" mentoring progress tahun sebelumnya (untuk perpanjangan penggunaan TKA) dan mentoring plan/contract tahun berjalan (untuk penggunaan TKA baru dan perpanjangan)."+
+		" Pelaksanaan program mentoring yang terstruktur dan terukur, pemilihan TKI pendamping yang sesuai dengan kompetensi tla, evaluasi mentoring setiap 6 bulan.<br>-"+
+		" Laporan penilaian/hasil kinerja tahun sebelumya (untuk perpanjangan penggunaan TKA) dan target kinerja tahun berjalan (untuk penggunaan TKA Baru dan Perpanjangan"+
+		" Penggunaan TKA) dari TKA.<br>- Untuk TKA yang menduduki level 1, Performance contract / KPI dengan kantor pusat (untuk penggunaan TKA Baru dan Perpanjangan "+
+		" penggunaan TKA) serta pencapaian dan performance contract / KPI tahun sebelumnya (untuk perpanjangan penggunaan TKA)<br>- Untuk TKA yang menduduki level 1 atau "+
+		" level 2, komitmen tahun berjalan (untuk penggunaan TKA Baru dan Perpanjangan Penggunaan TKA) serta pencapiaan komitmen tahun sebelumnya (untuk perpanjangan"+
+		" penggunaan TKA)<br>- Agar laporan-laporan tersebut di atas disampaikan selambat-lambatnya setiap akhir kuartal 2 setiap tahunnya.<br>- KKKS agar menyampaikan"+
+		" pelaksanaan program pengembangan TKI pendamping dalam laporan tahunan Career Developement Mentoring (CDM).<br>- Ketidaksesuaian/kelalaian KKKS dalam menyampaikan "+
+		" laporan sebagaimana disebutkan di atas, maka SKK Migas dapat mengeluarkan surat pembatalan/pencabutan persetujuan penggunaan TKA Baru dan Perpanjangan Penggunaan "+
+		" TKA yang telah dikeluarkan.<br>5. Dalam hal TKA yang menduduki jabatan tersebut tidak menunjukkan kinerja yang baik atau melakukan pelanggaran yang merugikan,"+
+		" maka SKK migas dapat mengeluarkan sruat pencabutan atau pembatalan IMTA danb iaya atas keberadaan TKA dapat dikoreksi (non cost recovery)<br>6. Agar Sdr. "+
+		" Dwyane David FABIAN turut berpartisipasi memberikan General Lecture ke Universitas Negeri, anatara lain yaitu Institut Teknologi Bandung, "+
+		" Universitas Negeri Padjajaran, Universitas Gadjah Mada, Universitas Proklamasi 45, Universitas Pembangunan Nasional \"Veteran\", "+
+		" Sekolah Tinggi Energi dan Mineral \"AKA MIGAS\" dalam rangka implementasi program Expoert Goes to Cmapus sebagai bagian dari pengembangan tenaga nasional."+
+		" <br><br>Pengajuan perpanjangan penggunaan TKA dan pindah jabatan dimaksud agar diproses lebih lanjut dengan instansi terkait.<br><br>Demikian untuk dapat"+
+		" dilaksanakan.<br><br>Kepala Dvisi Sumber Daya Manusia<br><br>Budi Arman<br><br>Tembusan :<br>Direktur Pembinaan Program MIGAS"
+		def imtaTemplateFormPersetujuan = "<div><font face=\"Arial, Verdana\"><span style=\"font-size: 13.3333px;\">1. Latar Belakang/Usulan</span></font></div><div><font face=\"Arial, Verdana\">"+
+										"<span style=\"font-size: 13.3333px;\">2. Isi/Evaluasi</span></font></div><div><font face=\"Arial, Verdana\"><span style=\"font-size: 13.3333px;\">"+
+										"3. Rekomendasi</span></font></div><div><font face=\"Arial, Verdana\"><span style=\"font-size: 13.3333px;\">4. Lampiran</span></font></div>"+
+										"<div style=\"font-family: Arial, Verdana; font-size: 10pt; font-style:  normal; font-variant: normal; font-weight: normal; line-height: normal;\"><br></div>"
+
+		ImtaTemplate imtaTemplate = new ImtaTemplate(
+			id:1,
+			namaSurat:"Surat Rekomendasi",
+			template:imtaTemplateSrtRekomendasi
+			)
+		imtaTemplate.save()
+		
+		ImtaTemplate imtaTemplate2 = new ImtaTemplate(
+			id:1,
+			namaSurat:"Surat Persetujuan",
+			template:imtaTemplateSrtPersetujuan
+			)
+		imtaTemplate2.save()
+		ImtaTemplate imtaTemplate3 = new ImtaTemplate(
+			id:1,
+			namaSurat:"Formulir Persetujuan",
+			template:imtaTemplateFormPersetujuan
+			)
+		imtaTemplate3.save()
+		
+		//template surat
+		//rptk
+		def rptkTemplateSrtPersetujuan = "<div> Nomor : SRT - &nbsp; &nbsp; &nbsp; &nbsp; / SKKD10000/{tahun}/S8 &nbsp; &nbsp; &nbsp; "+
+										"&nbsp; &nbsp; &nbsp;Jakarta,</span></font></div><div> Lampiran : - &nbsp; &nbsp; &nbsp; &nbsp; "+
+										"&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Yth.</span></font></div><div>"+
+										" Hal : {perihal} RPTK &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{nama_kkks}"+
+										"</span></font></div><div> {nama_kkks} {periode} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n"+
+										"bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;......................</span></font></div><div><font face=\"Arial, Verdana\"><span style &nb"+
+										"sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ......................</span></font></div><div><font face=\"Arial, Verdana\">"+
+										">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp"+
+										"; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ......................</span></font></div><div><font face=\"Arial, Verdana\">"+
+										"</font></div><div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb"+
+										"sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; u.p. GM. HR. Operati"+
+										"ons</span></font></div><div> <br></span></font></div><div><font face=\"Arial, Verdana\">"+
+										"Sehubungan dengan surat Saudara No. {no_surat} tanggal {tanggal_surat} perihal tersebut di atas, dengan ini kami sampaikan hal-hal"+
+										" sebagai berikut:</span></font></div><div> I. SKK Migas menyetujui penggunaan tenaga kerja untuk "+
+										" {nama_kkks} dengan rekapitulasi sebagai berikut :</span></font></div><div> <br></span></font></div>"+
+										" <div> {Tabel 1}</span></font></div><div><font face=\"Arial, Verdana\"> "+
+										" <br></span></font></div><div> II. SKK Migas menyetujui penambahan "+
+										" {jml_penambahan_posisi} posisi TKA Baru sebagaimana terlampir.</span></font></div><div> "+
+										" III. SKK Migas menyetujui perpanjangan {jml_perpanjangan} posisi TKA sebagaimana terlampir.</span></font></div><div><font face=\"Arial, Verdana\">"+
+										"  IV. SKK Migas menyetujui {jml_perpanjangan_dan_perubahan} perpanjangan dan perubahan nama posisi TKA sebagaimana "+
+										" terlampir.</span></font></div><div> V. SKK Migas belum menyetujui {jml_belum_menyetujui}"+
+										" posisi TKA sebagaimana terlampir.</span></font></div><div> VI. SKK Migas menyetujui penggunaan"+
+										" tenaga kerja melalui mekanisme time sharing dengan catatan data pembebanan biaya tenaga kerja pada tabel time sharing (terlampir) merupakan estimasi berdasarkan"+
+										" kegiatan operasi {nama_kkks} pada saat surat ini dibuat. {nama_kkks} harus dapat mempertanggungjawabkan pembebanan biaya tenaga kerja (time sharing) termasuk"+
+										" apabila dilakukan proses audit oleh instansi berwenang.</span></font></div><div> VII."+
+										" Persetujuan perpanjangan RPTK tersebut di datas dengan ketentuan sebagai berikut :</span></font></div><div><font face=\"Arial, Verdana\">"+
+										"  a. RPTK ini merupakan rencana dimana dalam pengisian posisi-posisi yang telah disetujui, "+
+										" tergantung pada pelaksanaan kegiatan dan dapat dilakukan revisi oleh SKK Migas sesuai dengan perubahan rencana kerja KKKS.</span></font></div><div>"+
+										"  b. Untuk mengisi beberapa posisi jabatan yang masih lowong, agar {nama_kkks} "+
+										" dapat melakukan perekrutan</span></font></div><div> c. Dalam rangka pendayagunaan TKI, "+
+										" {nama_kkks} dapat melakukan perekrutan TKI melalui mekanisme Kontrak Kerja Waktu Tertentu atau melalui Kontrak Jasa Tenaga Kerja dengan tarif sesuai"+
+										" kondisi market regional, dengan ketentuan pekerjaan yang dilaksanakan memenui Peraturan Perundangan Ketenagakerjaan yang berlaku.</span></font></div>"+
+										" <div> d. Persetujuan ini diberikan untuk mendukung kebutuhan operasi {nama_kkks}, "+
+										" apabila TKA yang menduduki jabatan-jabatan tersebut gagal dalam melaksanakan fungsinya atau melakukan tindakan yang merugikan KKKS dan/atau SKK Migas"+
+										" Verdana\"> e. Agar {nama_kkks} selalu memperbaharui Sistem Informasi Data Pekerja (SIDP) apabila terjadi perubahan "+
+										" dalam hal ketenagakerjaan.</span></font></div><div> <br></span></font></div><div> "+
+										" Berkenaan dengan hal tersebut diatas, agar Saudara segera memproses perpanjangan RPTK {nama_kkks}"+
+										" {periode} tersebut degnan instansi terkait.</span></font></div><div> <br></span></font></div>"+
+										" <div> Atas perhatian Saudara, kami ucapkan terima kasih.</span></font></div><div>"+
+										"  <br></span></font></div><div> "+
+										" Kepala Divusi Sumber Daya Manusia</span></font></div><div> <br></span>"+
+										" </font></div><div> Budi Arman</span></font></div><div>"+
+										" <br></span></font></div><div> Tembusan : "+
+										" Direktur Pembinaan Program MIGAS, Ditjen Migas, Kementrian ESDM.</span></font></div>"
+										
+										
+		
+		RptkTemplate rptkTemplate = new RptkTemplate(
+			id:1,
+			namaSurat:"Surat Persetujuan",
+			template:rptkTemplateSrtPersetujuan
+			)
+		rptkTemplate.save()		
+		def rptkTemplateSrtRekomendasi = "<div> Nomor : SRT &nbsp; &nbsp; &nbsp;/SKKD1000/{tahun}/S8 &nbsp; &nbsp; &nbsp; &nbsp;Jakarta,&nbsp;</div>"+
+										"<div> Lampiran : - &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Yth.</div>"+
+										"<div> Hal : {perihal} RPTK &nbsp; &nbsp; &nbsp; &nbsp;1. Direktorat Jendral Minyak dan Gas Bumi</div>"+
+										"<div><font face='Arial, Verdana'>&nbsp; &nbsp; &nbsp; {nama_kkks} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; u.p. Direktur Pembinaan Program Migas</font></div>"+
+										"<div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Plaza Centris Lt. 6</div>"+
+										"<div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Jl. H.R. Rasuna Said Kav. 58</div>"+
+										"<div>  <br></div><div>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  2. Direktorat Jenderal BINAPENTA</div>"+
+										"<div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;u.p.  Direktur Penggunaan Tenaga Kerja Asing</div>"+
+										"<div> &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Jl. Gatot Sburoto </div>"+
+										"<div> <br></div><div><font face='Arial, Verdana'> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Jakarta</font></div>"+
+										"<div> <br> </div><div><span style='font-size: 10pt;'><br></span></div><div><span style='font-size: 10pt;'><br></span></div><div><span style='font-size: 10pt;'><br></span></div><div><span style='font-size: 10pt;'>{Tabel 1}Kepala Divisi Sumber Daya Manusia</span></div>"+
+										"<div> <br></div><div> Budi Arman </div><div> <br></div><div> Tembusan :</div><div>  GM. HR. Operations Chevron Indonesia Company</div>"
+
+		RptkTemplate rptkTemplate2 = new RptkTemplate(
+			id:1,
+			namaSurat:"Surat Rekomendasi",
+			template:rptkTemplateSrtRekomendasi
+			)
+		rptkTemplate2.save()
+		
+		def rptkTemplateFormPersetujuan ="<div> 1. Latar Belakang/Usulan</span></font></div><div><font face=\"Arial, Verdana\">"+
+										" <br></span></font></div><div> Menindaklanjuti surat "+
+										"{nama_kkks} No. {no_surat} tanggal {tanggal_surat} perihal {perihal} dalam RPTK {nama_kkks} Periode {periode} dengan ini kami sampaikan sebagai berikut:"+
+										"</span></font></div><div> <br></span></font></div><div><font face=\"Arial, Verdana\">"+
+										" I. {nama_kkks} mengajukan usulan perpanjangan posisi TKA sebagai berikut:</span></font></div><div>"+
+										" <br></span></font></div><div><font face=\"Arial, Verdana\">"+
+										" {Tabel 1}</span></font></div><div> "+
+										"<br></span></font></div><div> II. {nama_kkks} mengajukan usulan penambahan TKA baru "+
+										"sebagai berikut:</span></font></div><div> <br></span></font></div><div>"+
+										" {Tabel 2}</span></font></div><div><font face=\"Arial, Verdana\">"+
+										" <br></span></font></div><div> "+
+										"2. Isi/Evaluasi</span></font></div><div> <br></span></font></div><div>"+
+										" I. Sebelumnya melalui surat SKK Migas No. ........... tanggal .......... "+
+										"terdapat posisi yang belum disetujui yaitu:</span></font></div><div> "+
+										"<br></span></font></div><div> {Tabel 3}</span></font></div><div>"+
+										" <br></span></font></div><div><font face=\"Arial, Verdana\">"+
+										" II. Rapat pembahasan antara Dinas Pemeliharaan Fasilitas SKK Migas dengan {nama_kkks}, "+
+										"tanggal ..... dengan kesepakatan bahwa keputusan dikembalikan kepada fungsi SDM SKK Migas.</span></font></div><div>"+
+										" III. Keserpakatan antara Fungsi SDM SKK Migas dengan {nama_kkks} "+
+										"sesuai dengan surat {nama_kkks} No. ......... tanggal ................</span></font></div><div><font face=\"Arial, Verdana\">"+
+										" IV. E-Memo Kepala Divisi Manajemen Proyek tanggal ...........</span></font></div><div>"+
+										" <br></span></font></div><div><font face=\"Arial, Verdana\">"+
+										" 3. Rekomendasi</span></font></div><div> "+
+										"I. Kami merekomendasikan untuk menyetujui perpanjangan TKA berikut :</span></font></div><div> "+
+										"<br></span></font></div><div> {Tabel 4}</span></font></div><div><font face=\"Arial, Verdana\">"+
+										" <br></span></font></div><div> II. Kami tidak menyetujui"+
+										" penambahan posisi TKA berikut :</span></font></div><div> <br></span></font></div><div>"+
+										"  {Tabel 5}</span></font></div><div><font face=\"Arial, Verdana\"> "+
+										" <br></span></font></div><div> 4. Lampiran</span></font></div><div>"+
+										"  <br></span></font></div><div> "+
+										" Surat Pengajuan KKKS</span></font></div><div> <br></span></font></div><div>"+
+										"  Setuju/Tidak Setuju sesuai Rekomendasi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"+
+										" &nbsp; &nbsp; &nbsp;Disusun oleh :</span></font></div><div> "+
+										" Deputi Pengendalian Dukungan Bisnis &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Kepala Divisi Sumber Daya Manusia</span>"+
+										" </font></div><div> <br></span></font></div><div><font face=\"Arial, Verdana\">"+
+										"  Rudiantono Rimbono &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "+
+										" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Budi Arman</span></font></div><div style=\"font-family: Arial, Verdana; font-size: 10pt; font-style: "+
+										" normal; font-variant: normal; font-weight: normal; line-height: normal;\"><br></div>"
+		
+		RptkTemplate rptkTemplate3 = new RptkTemplate(
+			id:1,
+			namaSurat:"Formulir Persetujuan",
+			template:rptkTemplateFormPersetujuan
+			)
+		rptkTemplate3.save()
+		
+        Rptk rptk1 = new Rptk(
+			idRptk: 2,
+			kkks :kkks1,
+			versi:1,
+			kuartal1:1,
+			kuartal2:3,
+			tahun1:2015,
+			tahun2:2018,
+			stLampiran1:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran2:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran3:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran4:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran5:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran6:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran7:"/Sites/testrptk/Desain_dashboard.xlsx",stLampiran8:"/Sites/testrptk/Desain_dashboard.xlsx"
+		)
+		rptk1.save()		
+		
+		
+		new Jabatan(levels:"2",rptk:2,halaman:2,ketTambahan:"Komitmen4", namaJabatan:"Jabatan 4",batasWaktu:"2016").save()
+		//new Jabatan(levels:"2",rptk:2,halaman:1,ketTambahan:"Komitmen5", namaJabatan:"Jabatan 5",batasWaktu:"2017").save()
+		new Jabatan(levels:"2",rptk:2,halaman:1,ketTambahan:"Komitmen5", namaJabatan:"Jabatan 5",batasWaktu:"2017").save()
+		RptkPengajuan rpPengajuan1 = new RptkPengajuan(
+			noPengajuan: "A-3-2015-000001-000001",
+			noSurat:"KW/02/1",
+			rptk: 1,
+			kkks: "Kangean Energy Indonesia Ltd.",
+			jenisKkks: "Eksplorasi",
+			status:"Dalam Proses",
+
+			createdBy:"System",
+			createdDate:null,
+			updatedBy:"System",
+			updatedDate:new Date(),
+			oleh: "KKKS"
+		)
+		rpPengajuan1.save(failOnError:true,flush:true)
+		
+		RptkPengajuan rpPengajuan2 = new RptkPengajuan(
+			noPengajuan: "A-3-2015-000002-000001",
+			noSurat:"uX/84/6",
+			rptk: 1,
+			kkks: "EMP Exploration (Kangean) Ltd.",
+			jenisKkks: "Eksplorasi",
+			status:"Diajukan",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:null,
+			type:"Baru",
+			oleh: "KKKS"
+		)
+		rpPengajuan2.save(failOnError:true,flush:true)
+		
+		RptkPengajuan rpPengajuan3 = new RptkPengajuan(
+			noPengajuan: "A-3-2015-000003-000001",
+			noSurat:"jH/26/2",
+			rptk: 1,
+			kkks: "Kangean Energy Indonesia Ltd.",
+			jenisKkks: "Produksi",
+			status:"Disetujui Final (Lengkap)",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:new Date(),
+			type:"Baru",
+			oleh: "SKK MIGAS"
+		)
+		rpPengajuan3.save(failOnError:true,flush:true)
+		
+		RptkPengajuan rpPengajuan4 = new RptkPengajuan(
+			noPengajuan: "A-3-2015-000004-000001",
+			noSurat:"aV/87/3",
+			rptk: 2,
+			kkks: "Pertamina EP",
+			jenisKkks: "Produksi",
+			status:"Disetujui Sebagian (Belum Lengkap)",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:null,
+			type:"Baru",
+			oleh: "Staff"
+		)
+		rpPengajuan4.save(failOnError:true,flush:true)
+		
+		RptkPengajuan rpPengajuan5 = new RptkPengajuan(
+			noPengajuan: "A-3-2015-000005-000001",
+			noSurat:"aV/87/3",
+			rptk: 2,
+			kkks: "Pertamina EP",
+			jenisKkks: "Produksi",
+			status:"Diminta Perbaikan",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:null,
+			type:"Baru",
+			oleh: "Staff"
+		)
+		rpPengajuan5.save(failOnError:true,flush:true)
+		
+		RptkMom rptkMom1 = new RptkMom(
+			idMom: 1,
+			rptkPengajuan :rpPengajuan3,
+			pathMom:"jhk",
+			type:"Baru",
+			noMom:"abcd-da1"
+		)
+		rptkMom1.save(failOnError:true,flush:true)
+		
+				RptkSurat rptkSurat1 = new RptkSurat(
+			idSurat : 1,
+			jenisSurat : "FormPersetujuan",
+			kontenSurat	: "ini contoh form persetujuan",
+			rptkPengajuan: rpPengajuan4,
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			type:"Baru",
+			updatedDate:new Date()
+		)
+		rptkSurat1.save(failOnError:true,flush:true)
+		
+				RptkSurat rptkSurat2 = new RptkSurat(
+			idSurat : 2,
+			jenisSurat : "SuratPersetujuan",
+			kontenSurat	: "ini contoh surat persetujuan",
+			rptkPengajuan: rpPengajuan4,
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:new Date()
+		)
+		rptkSurat2.save(failOnError:true,flush:true)
+				RptkSurat rptkSurat3 = new RptkSurat(
+			idSurat : 3,
+			jenisSurat : "SuratRekomendasi",
+			kontenSurat	: "ini contoh surat rekomendasi",
+			rptkPengajuan: rpPengajuan4,
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:new Date()
+		)
+		rptkSurat3.save(failOnError:true,flush:true)
+
+		RptkKomentar rptkKomentar1 = new RptkKomentar(
+		idKomentar : 1,
+		status :"1",
+		penerima : "jojoReceiver",
+		konten : "tolong dicabut halaman 1 dua 3",
+		createdBy : "jojoC",
+		createdDate :new Date(),
+		updatedBy : "jojoU",
+		updatedDate : new Date(),
+		rptkPengajuan: rpPengajuan4,
+		)
+		rptkKomentar1.save(failOnError:true,flush:true)
+		
+		RptkKomentar rptkKomentar2 = new RptkKomentar(
+		idKomentar : 2,
+		status :"2",
+		penerima : "jojoReceiver",
+		konten : "ditolak karena data tidak lengkap",
+		createdBy : "jojoC",
+		createdDate :new Date()+1,
+		updatedBy : "jojoU",
+		updatedDate : new Date()+1,
+		rptkPengajuan: rpPengajuan4,
+		)
+		rptkKomentar2.save(failOnError:true,flush:true)
+		
+		RptkKomentar rptkKomentar3 = new RptkKomentar(
+		idKomentar : 3,
+		status :"1",
+		penerima : "jojoReceiver",
+		konten : "terima kasih",
+		createdBy : "jojoC",
+		createdDate :new Date()+2,
+		updatedBy : "jojoU",
+		updatedDate : new Date()+2,
+		rptkPengajuan: rpPengajuan4,
+		)
+		rptkKomentar3.save(failOnError:true,flush:true)
+		
+		ImtaSurat imtaSurat1 = new ImtaSurat(
+			imtaPengajuan : 1,
+			formulirPersetujuan:"",
+			suratPersetujuan :"",
+			suratRekomendasi:"",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:new Date()
+		)
+		imtaSurat1.save(failOnError:true,flush:true)
+		
+		ImtaSurat imtaSurat2 = new ImtaSurat(
+			imtaPengajuan : 2,
+			formulirPersetujuan:"",
+			  suratPersetujuan :"",
+			suratRekomendasi:"",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:new Date()
+		)
+		imtaSurat2.save(failOnError:true,flush:true)
+		
+		ImtaMemo imtaMemo1 = new ImtaMemo(
+			idMemo : 1,
+			imtaPengajuan:1,
+			user:"kkks",
+			memo:"Test1",
+			penerima:"test1",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:new Date()
+		)
+		imtaMemo1.save(failOnError:true,flush:true)
+		
+		ImtaMemo imtaMemo2 = new ImtaMemo(
+			idMemo : 2,
+			imtaPengajuan:1,
+			user:"Kasubdin",
+			memo:"Test2",
+			penerima:"test2",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:new Date()
+		)
+		imtaMemo2.save(failOnError:true,flush:true)
+		
+		RptkPengajuan rpDummy = new RptkPengajuan(
+			noPengajuan: "P-123-2015-001-002",
+			noSurat:"aV/87/3",
+			rptk: rptk1,
+			kkks: "Pertamina EP",
+			jenisKkks: "Produksi",
+			status:"Disetujui Sebagian",
+			createdBy:"System",
+			createdDate:new Date(),
+			perihalSurat:"testing revisi",
+			tglSurat:new Date(),
+			suratPermohonan:"testSurat.txt",
+			updatedBy:"System",
+			updatedDate:null
+		)
+		rpDummy.save(failOnError:true, flush:true)
+
+		ImtaMom imtaDummy1 = new ImtaMom(
+			imtaPengajuan: 1,
+			namaMom: "Mom Hari senin",
+			tanggalMom: new Date(),
+			pathMom: "huasdhfu1787267gfa7g",
+			createdDate: new Date(),
+			updatedDate: new Date(),
+			createdBy: "System",
+			updatedBy:"System",
+			noMom: "awfe/2015/3"
+		)
+		imtaDummy1.save(failOnError:true, flush: true)
+
+		ImtaMom imtaDummy2 = new ImtaMom(
+			imtaPengajuan: 1,
+			namaMom: "Mom Hari selasa",
+			tanggalMom: new Date(),
+			pathMom: "huasdhfu1787267gfa7g",
+			createdDate: new Date(),
+			updatedDate: new Date(),
+			createdBy: "System",
+			updatedBy:"System",
+			noMom: "awaweb/2015/4"
+		)
+		imtaDummy2.save(failOnError:true, flush: true)
+
+		ImtaMom imtaDummy3 = new ImtaMom(
+			imtaPengajuan: 1,
+			namaMom: "Mom Hari rabu",
+			tanggalMom: new Date(),
+			pathMom: "huasdhfu1787267gfa7g",
+			createdDate: new Date(),
+			updatedDate: new Date(),
+			createdBy: "System",
+			updatedBy:"System",
+			noMom: "abwer/2015/3"
+		)
+		imtaDummy3.save(failOnError:true, flush: true)
+
+		ImtaMom imtaDummy4 = new ImtaMom(
+			imtaPengajuan: 2,
+			namaMom: "Mom Hari kamis",
+			tanggalMom: new Date(),
+			pathMom: "huasdhfu1787267gfa7g",
+			createdDate: new Date(),
+			updatedDate: new Date(),
+			createdBy: "System",
+			updatedBy:"System",
+			noMom: "aaer/2015/34"
+		)
+		imtaDummy4.save(failOnError:true, flush: true)
+		
+		
+        ImtaEpo ie = new ImtaEpo(tka: 1, isActive: true, createdBy: "System BootStrap", createdDate: new Date(), updatedBy: "System BootStrap", updatedDate: new Date())
+        ie.save()
+        
+		Tka tkaab = new Tka(idTka:"8",nip:"20161116001",kkks:"1",namaTkaAwal:"Watsn",namaTkaTengah:"Jonh",namaTkaAkhir:"H.",createdBy:"tia",
+			warganegara:"UK",alamat:"Ir. Juanda", tempatLahir:"London", tanggalLahir:new Date())
+		tkaab.save(flush:true,failOnError:true);
+        new ImtaEpo(tka: tkaab, isActive: true, createdBy: "System BootStrap", createdDate: new Date(), updatedBy: "System BootStrap", updatedDate: new Date()).save(flush:true,failOnError:true);
+
+		Tka tkaac = new Tka(idTka:"9",nip:"20161116001",kkks:"1",namaTkaAwal:"Watson",namaTkaTengah:"H.",namaTkaAkhir:"John",createdBy:"tia",
+			warganegara:"UK",alamat:"Ir. Juanda", tempatLahir:"London", tanggalLahir:new Date())
+		tkaac.save(flush:true,failOnError:true);
+        new ImtaEpo(tka: tkaac, isActive: true, createdBy: "System BootStrap", createdDate: new Date(), updatedBy: "System BootStrap", updatedDate: new Date()).save(flush:true,failOnError:true);
+
+		Tka tkad = new Tka(idTka:"10",nip:"20161116001",kkks:"1",namaTkaAwal:"H.",namaTkaTengah:"Jonh",namaTkaAkhir:"Watson",createdBy:"tia",
+				warganegara:"UK",alamat:"Ir. Juanda", tempatLahir:"London")
+		tkad.save(flush:true,failOnError:true);
+        new ImtaEpo(tka: tkad, isActive: true, createdBy: "System BootStrap", createdDate: new Date(), updatedBy: "System BootStrap", updatedDate: new Date()).save(flush:true,failOnError:true);
+
+		Tka tkae = new Tka(idTka:"11",nip:"20161116001",kkks:"1",namaTkaAwal:"tia",namaTkaTengah:"hyde",namaTkaAkhir:"ajah",createdBy:"tia",
+			warganegara:"London",alamat:"Ir. Juanda", tempatLahir:"London", tanggalLahir:new Date())
+		tkae.save(flush:true,failOnError:true);		
+		new ImtaEpo(tka: tkae, isActive: true, createdBy: "System BootStrap", createdDate: new Date(), updatedBy: "System BootStrap", updatedDate: new Date()).save(flush:true,failOnError:true);
+
+		ImtaUpload imtaUpload1 = new ImtaUpload(
+			imtaPengajuan : 1,
+			  pathDitjenMigas :"",
+			pathDisnakertrans:"",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:new Date()
+		)
+		imtaUpload1.save(failOnError:true,flush:true)
+		
+		ImtaUpload imtaUpload2 = new ImtaUpload(
+			imtaPengajuan : 2,
+			  pathDitjenMigas :"",
+			pathDisnakertrans:"",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:new Date()
+		)
+		imtaUpload2.save(failOnError:true,flush:true)
+		
+		ImtaUpload imtaUpload3 = new ImtaUpload(
+			imtaPengajuan : 6,
+			  pathDitjenMigas :"",
+			pathDisnakertrans:"",
+			createdBy:"System",
+			createdDate:new Date(),
+			updatedBy:"System",
+			updatedDate:new Date()
+		)
+		imtaUpload3.save(failOnError:true,flush:true)
+        
+	}
+	
+	
+	
+   
+}

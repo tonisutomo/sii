@@ -1,0 +1,136 @@
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version:        Apache Tomcat/7.0.82
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server built:          Sep 29 2017 12:23:15 UTC
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server number:         7.0.82.0
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Name:               Mac OS X
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Version:            10.13.2
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Architecture:          x86_64
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Java Home:             /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/jre
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Version:           1.7.0_80-b15
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Vendor:            Oracle Corporation
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_BASE:         /Users/tonisutomo/Documents/tomcat7
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_HOME:         /Users/tonisutomo/Documents/tomcat7
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.config.file=/Users/tonisutomo/Documents/tomcat7/conf/logging.properties
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.endorsed.dirs=/Users/tonisutomo/Documents/tomcat7/endorsed
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.base=/Users/tonisutomo/Documents/tomcat7
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.home=/Users/tonisutomo/Documents/tomcat7
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.io.tmpdir=/Users/tonisutomo/Documents/tomcat7/temp
+Feb 05, 2018 9:24:59 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/tonisutomo/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+Feb 05, 2018 9:24:59 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-8080"]
+Feb 05, 2018 9:24:59 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-8009"]
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 854 ms
+Feb 05, 2018 9:24:59 AM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Feb 05, 2018 9:24:59 AM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.82
+Feb 05, 2018 9:24:59 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /Users/tonisutomo/Documents/tomcat7/webapps/circle.war
+Feb 05, 2018 9:25:00 AM org.apache.catalina.core.StandardContext addApplicationListener
+INFO: The listener "com.sun.faces.config.ConfigureListener" is already configured for this context. The duplicate definition has been ignored.
+Feb 05, 2018 9:25:00 AM com.sun.faces.config.ConfigureListener contextInitialized
+INFO: Initializing Mojarra 2.2.8 ( 20140814-1418 https://svn.java.net/svn/mojarra~svn/tags/2.2.8@13507) for context '/circle'
+Feb 05, 2018 9:25:00 AM com.sun.faces.spi.InjectionProviderFactory createInstance
+INFO: JSF1048: PostConstruct/PreDestroy annotations present.  ManagedBeans methods marked with these annotations will have said annotations processed.
+Feb 05, 2018 9:25:01 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /Users/tonisutomo/Documents/tomcat7/webapps/circle.war has finished in 1,701 ms
+Feb 05, 2018 9:25:01 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /Users/tonisutomo/Documents/tomcat7/webapps/firstApplication.war
+Feb 05, 2018 9:25:01 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /Users/tonisutomo/Documents/tomcat7/webapps/firstApplication.war has finished in 49 ms
+Feb 05, 2018 9:25:01 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/world
+Feb 05, 2018 9:25:03 AM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: http://java.sun.com/jsp/jstl/core is already defined
+Feb 05, 2018 9:25:03 AM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: http://java.sun.com/jsp/jstl/fmt is already defined
+Feb 05, 2018 9:25:03 AM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: http://www.springframework.org/tags is already defined
+Feb 05, 2018 9:25:03 AM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: http://www.springframework.org/tags/form is already defined
+Feb 05, 2018 9:25:03 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Feb 05, 2018 9:25:10 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/world has finished in 9,336 ms
+Feb 05, 2018 9:25:10 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/docs
+Feb 05, 2018 9:25:10 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/docs has finished in 23 ms
+Feb 05, 2018 9:25:10 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/jsf
+Feb 05, 2018 9:25:10 AM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(/Users/tonisutomo/Documents/tomcat7/webapps/jsf/WEB-INF/lib/jsp-api-2.1.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/el/Expression.class
+Feb 05, 2018 9:25:10 AM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(/Users/tonisutomo/Documents/tomcat7/webapps/jsf/WEB-INF/lib/servlet-api-2.5.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+Feb 05, 2018 9:25:11 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Feb 05, 2018 9:25:11 AM org.apache.catalina.core.StandardContext addApplicationListener
+INFO: The listener "com.sun.faces.config.ConfigureListener" is already configured for this context. The duplicate definition has been ignored.
+Feb 05, 2018 9:25:11 AM com.sun.faces.config.ConfigureListener contextInitialized
+INFO: Initializing Mojarra 2.1.7 (SNAPSHOT 20120206) for context '/jsf'
+Feb 05, 2018 9:25:11 AM com.sun.faces.spi.InjectionProviderFactory createInstance
+INFO: JSF1048: PostConstruct/PreDestroy annotations present.  ManagedBeans methods marked with these annotations will have said annotations processed.
+Feb 05, 2018 9:25:11 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/jsf has finished in 1,243 ms
+Feb 05, 2018 9:25:11 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/manager
+Feb 05, 2018 9:25:11 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/manager has finished in 77 ms
+Feb 05, 2018 9:25:11 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/examples
+Feb 05, 2018 9:25:12 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/examples has finished in 154 ms
+Feb 05, 2018 9:25:12 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/ROOT
+Feb 05, 2018 9:25:12 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/ROOT has finished in 21 ms
+Feb 05, 2018 9:25:12 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/host-manager
+Feb 05, 2018 9:25:12 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/host-manager has finished in 27 ms
+Feb 05, 2018 9:25:12 AM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-8080"]
+Feb 05, 2018 9:25:12 AM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-8009"]
+Feb 05, 2018 9:25:12 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 12710 ms
+Feb 05, 2018 9:31:23 AM org.apache.catalina.core.StandardServer await
+INFO: A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+Feb 05, 2018 9:31:23 AM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["http-bio-8080"]
+Feb 05, 2018 9:31:23 AM org.apache.coyote.AbstractProtocol pause
+INFO: Pausing ProtocolHandler ["ajp-bio-8009"]
+Feb 05, 2018 9:31:23 AM org.apache.catalina.core.StandardService stopInternal
+INFO: Stopping service Catalina
+Feb 05, 2018 9:31:23 AM org.apache.catalina.loader.WebappClassLoaderBase clearReferencesThreads
+SEVERE: The web application [/world] appears to have started a thread named [PoolCleaner[2091283074:1517797883976]] but has failed to stop it. This is very likely to create a memory leak.
+Feb 05, 2018 9:31:23 AM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["http-bio-8080"]
+Feb 05, 2018 9:31:24 AM org.apache.coyote.AbstractProtocol stop
+INFO: Stopping ProtocolHandler ["ajp-bio-8009"]
+Feb 05, 2018 9:31:24 AM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["http-bio-8080"]
+Feb 05, 2018 9:31:24 AM org.apache.coyote.AbstractProtocol destroy
+INFO: Destroying ProtocolHandler ["ajp-bio-8009"]

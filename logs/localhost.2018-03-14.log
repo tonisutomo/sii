@@ -1,0 +1,26 @@
+Mar 14, 2018 1:10:51 PM org.apache.catalina.core.ApplicationContext log
+INFO: No Spring WebApplicationInitializer types detected on classpath
+Mar 14, 2018 1:10:51 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring root WebApplicationContext
+Mar 14, 2018 1:11:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring FrameworkServlet 'grails'
+Mar 14, 2018 1:11:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: contextInitialized()
+Mar 14, 2018 1:11:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: SessionListener: contextInitialized()
+Mar 14, 2018 1:11:10 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: attributeAdded('org.apache.jasper.compiler.TldLocationsCache', 'org.apache.jasper.compiler.TldLocationsCache@7c816470')
+Mar 14, 2018 1:12:05 PM org.apache.catalina.core.ApplicationContext log
+INFO: Initializing Spring FrameworkServlet 'gsp'
+Mar 14, 2018 1:12:05 PM org.apache.catalina.core.ApplicationContext log
+INFO: GSP servlet initialized
+Mar 14, 2018 2:00:22 PM org.apache.catalina.core.ApplicationContext log
+INFO: SessionListener: contextDestroyed()
+Mar 14, 2018 2:00:22 PM org.apache.catalina.core.ApplicationContext log
+INFO: ContextListener: contextDestroyed()
+Mar 14, 2018 2:00:22 PM org.apache.catalina.core.ApplicationContext log
+INFO: Destroying Spring FrameworkServlet 'grails'
+Mar 14, 2018 2:03:24 PM org.apache.catalina.core.ApplicationContext log
+INFO: Destroying Spring FrameworkServlet 'gsp'
+Mar 14, 2018 2:03:24 PM org.apache.catalina.core.ApplicationContext log
+INFO: Closing Spring root WebApplicationContext
