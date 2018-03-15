@@ -1,0 +1,8 @@
+0:0:0:0:0:0:0:1 - - [14/Mar/2018:13:12:05 +0700] "GET /rptk-server HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Mar/2018:13:12:11 +0700] "GET /rptk-server/ HTTP/1.1" 200 12213
+0:0:0:0:0:0:0:1 - - [14/Mar/2018:13:12:13 +0700] "GET /rptk-server/static/css/main.css HTTP/1.1" 200 11240
+0:0:0:0:0:0:0:1 - - [14/Mar/2018:13:12:13 +0700] "GET /rptk-server/static/css/mobile.css HTTP/1.1" 200 1432
+0:0:0:0:0:0:0:1 - - [14/Mar/2018:13:12:13 +0700] "GET /rptk-server/static/js/application.js HTTP/1.1" 200 183
+0:0:0:0:0:0:0:1 - - [14/Mar/2018:13:12:13 +0700] "GET /rptk-server/static/images/grails_logo.png HTTP/1.1" 200 10172
+0:0:0:0:0:0:0:1 - - [14/Mar/2018:13:12:13 +0700] "GET /rptk-server/static/images/apple-touch-icon-retina.png HTTP/1.1" 200 14986
+0:0:0:0:0:0:0:1 - - [14/Mar/2018:13:12:13 +0700] "GET /rptk-server/static/images/favicon.ico HTTP/1.1" 200 10134

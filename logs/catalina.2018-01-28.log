@@ -1,0 +1,132 @@
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version:        Apache Tomcat/7.0.82
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server built:          Sep 29 2017 12:23:15 UTC
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server number:         7.0.82.0
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Name:               Mac OS X
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Version:            10.13.2
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Architecture:          x86_64
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Java Home:             /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home/jre
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Version:           1.7.0_80-b15
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Vendor:            Oracle Corporation
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_BASE:         /Users/tonisutomo/Documents/tomcat7
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_HOME:         /Users/tonisutomo/Documents/tomcat7
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.config.file=/Users/tonisutomo/Documents/tomcat7/conf/logging.properties
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.endorsed.dirs=/Users/tonisutomo/Documents/tomcat7/endorsed
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.base=/Users/tonisutomo/Documents/tomcat7
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.home=/Users/tonisutomo/Documents/tomcat7
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Djava.io.tmpdir=/Users/tonisutomo/Documents/tomcat7/temp
+Jan 28, 2018 10:10:38 AM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: /Users/tonisutomo/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+Jan 28, 2018 10:10:38 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-bio-8080"]
+Jan 28, 2018 10:10:38 AM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["ajp-bio-8009"]
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.Catalina load
+INFO: Initialization processed in 675 ms
+Jan 28, 2018 10:10:38 AM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service Catalina
+Jan 28, 2018 10:10:38 AM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet Engine: Apache Tomcat/7.0.82
+Jan 28, 2018 10:10:38 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /Users/tonisutomo/Documents/tomcat7/webapps/firstApplication.war
+Jan 28, 2018 10:10:39 AM com.sun.faces.config.ConfigureListener contextInitialized
+INFO: Initializing Mojarra 2.1.6 (SNAPSHOT 20111206) for context '/firstApplication'
+Jan 28, 2018 10:10:40 AM com.sun.faces.spi.InjectionProviderFactory createInstance
+INFO: JSF1048: PostConstruct/PreDestroy annotations present.  ManagedBeans methods marked with these annotations will have said annotations processed.
+Jan 28, 2018 10:10:40 AM com.sun.faces.config.ConfigureListener$WebConfigResourceMonitor$Monitor <init>
+INFO: Monitoring jndi:/localhost/firstApplication/WEB-INF/faces-config.xml for modifications
+Jan 28, 2018 10:10:40 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /Users/tonisutomo/Documents/tomcat7/webapps/firstApplication.war has finished in 1,813 ms
+Jan 28, 2018 10:10:40 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/world
+Jan 28, 2018 10:10:42 AM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: http://java.sun.com/jsp/jstl/core is already defined
+Jan 28, 2018 10:10:42 AM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: http://java.sun.com/jsp/jstl/fmt is already defined
+Jan 28, 2018 10:10:42 AM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: http://www.springframework.org/tags is already defined
+Jan 28, 2018 10:10:42 AM org.apache.catalina.startup.TaglibUriRule body
+INFO: TLD skipped. URI: http://www.springframework.org/tags/form is already defined
+Jan 28, 2018 10:10:42 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Jan 28, 2018 10:10:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/world has finished in 9,586 ms
+Jan 28, 2018 10:10:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/docs
+Jan 28, 2018 10:10:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/docs has finished in 35 ms
+Jan 28, 2018 10:10:50 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/jsf
+Jan 28, 2018 10:10:50 AM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(/Users/tonisutomo/Documents/tomcat7/webapps/jsf/WEB-INF/lib/jsp-api-2.1.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/el/Expression.class
+Jan 28, 2018 10:10:50 AM org.apache.catalina.loader.WebappClassLoaderBase validateJarFile
+INFO: validateJarFile(/Users/tonisutomo/Documents/tomcat7/webapps/jsf/WEB-INF/lib/servlet-api-2.5.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
+Jan 28, 2018 10:10:50 AM org.apache.catalina.startup.TldConfig execute
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Jan 28, 2018 10:10:50 AM org.apache.catalina.core.StandardContext addApplicationListener
+INFO: The listener "com.sun.faces.config.ConfigureListener" is already configured for this context. The duplicate definition has been ignored.
+Jan 28, 2018 10:10:50 AM com.sun.faces.config.ConfigureListener contextInitialized
+INFO: Initializing Mojarra 2.1.7 (SNAPSHOT 20120206) for context '/jsf'
+Jan 28, 2018 10:10:50 AM com.sun.faces.spi.InjectionProviderFactory createInstance
+INFO: JSF1048: PostConstruct/PreDestroy annotations present.  ManagedBeans methods marked with these annotations will have said annotations processed.
+Jan 28, 2018 10:10:51 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/jsf has finished in 928 ms
+Jan 28, 2018 10:10:51 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/manager
+Jan 28, 2018 10:10:51 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/manager has finished in 49 ms
+Jan 28, 2018 10:10:51 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/examples
+Jan 28, 2018 10:10:51 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/examples has finished in 197 ms
+Jan 28, 2018 10:10:51 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/ROOT
+Jan 28, 2018 10:10:51 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/ROOT has finished in 31 ms
+Jan 28, 2018 10:10:51 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deploying web application directory /Users/tonisutomo/Documents/tomcat7/webapps/host-manager
+Jan 28, 2018 10:10:51 AM org.apache.catalina.startup.HostConfig deployDirectory
+INFO: Deployment of web application directory /Users/tonisutomo/Documents/tomcat7/webapps/host-manager has finished in 40 ms
+Jan 28, 2018 10:10:51 AM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-bio-8080"]
+Jan 28, 2018 10:10:51 AM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["ajp-bio-8009"]
+Jan 28, 2018 10:10:51 AM org.apache.catalina.startup.Catalina start
+INFO: Server startup in 12759 ms
+Jan 28, 2018 10:14:51 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /Users/tonisutomo/Documents/tomcat7/webapps/firstApplication-2.war
+Jan 28, 2018 10:14:51 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /Users/tonisutomo/Documents/tomcat7/webapps/firstApplication-2.war has finished in 43 ms
+Jan 28, 2018 10:16:12 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/firstApplication]
+Jan 28, 2018 10:16:32 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/firstApplication-2]
+Jan 28, 2018 10:16:32 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /Users/tonisutomo/Documents/tomcat7/webapps/firstApplication-2.war
+Jan 28, 2018 10:16:32 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /Users/tonisutomo/Documents/tomcat7/webapps/firstApplication-2.war has finished in 36 ms
+Jan 28, 2018 10:17:03 AM org.apache.catalina.startup.HostConfig undeploy
+INFO: Undeploying context [/firstApplication-2]
+Jan 28, 2018 10:17:03 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deploying web application archive /Users/tonisutomo/Documents/tomcat7/webapps/firstApplication.war
+Jan 28, 2018 10:17:03 AM org.apache.catalina.startup.HostConfig deployWAR
+INFO: Deployment of web application archive /Users/tonisutomo/Documents/tomcat7/webapps/firstApplication.war has finished in 41 ms
